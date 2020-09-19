@@ -200,43 +200,44 @@
               "tinymce/plugins/table",
               "tinymce/plugins/advlist"
             ]
-          }
-        },
-        "configurations": {
-          "production": {
-            "fileReplacements": [
-              {
-                "replace": "projects/cms/src/environments/environment.ts",
-                "with": "projects/cms/src/environments/environment.prod.ts"
-              }
-            ],
-            "optimization": true,
-            "outputHashing": "all",
-            "sourceMap": false,
-            "extractCss": true,
-            "namedChunks": false,
-            "aot": true,
-            "extractLicenses": true,
-            "vendorChunk": false,
-            "buildOptimizer": true,
-            "budgets": [
-              {
-                "type": "initial",
-                "maximumWarning": "2mb",
-                "maximumError": "5mb"
-              },
-              {
-                "type": "anyComponentStyle",
-                "maximumWarning": "6kb",
-                "maximumError": "10kb"
-              }
-            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/cms/src/environments/environment.ts",
+                  "with": "projects/cms/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "5mb",
+                  "maximumError": "10mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cms:build"
+            "browserTarget": "cms:build",
+            "port": 5000
           },
           "configurations": {
             "production": {

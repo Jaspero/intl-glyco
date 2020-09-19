@@ -4,9 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build:cms": "ng build --project=cms --prod",
     "start:website": "ng serve --project=website",
-    "start:cms": "ng serve --port 5000 --project=cms",
+    "start:cms": "ng serve --project=cms",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
