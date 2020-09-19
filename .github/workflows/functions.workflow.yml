@@ -22,7 +22,7 @@ jobs:
           npm --prefix functions ci
           npm --prefix functions run build
       - name: Set project
-        run: npm run firebase -- use jaspero-jms --token $FIREBASE_TOKEN
+        run: npm run firebase -- use intl-glyco-cb2de --token $FIREBASE_TOKEN
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       - name: Deploy to Firebase
