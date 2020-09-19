@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    if: contains(github.ref, 'dev')
+    if: contains(github.ref, 'master')
     name: Deploy
     runs-on: ubuntu-latest
     steps:
@@ -19,4 +19,4 @@ jobs:
           args: deploy --only firestore:indexes
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_ID: 'jaspero-jms'
+          PROJECT_ID: 'intl-glyco-cb2de'
