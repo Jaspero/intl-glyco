@@ -1,0 +1,61 @@
+<section class="grid p-y-l">
+  <div class="col-4 col-m-6 col-s-9 col-xs-12">
+    <mat-card>
+      <h6 class="m-b-l p-t-m ta-center">{{staticConfig.displayName}}</h6>
+      <!--Social login-->
+      <section>
+        <div class="m-b-s">
+          <button class="w-full" mat-stroked-button (click)="loginGoogle()">
+            {{'LOGIN.LOGIN_WITH' | transloco:{value: 'Google'} }}
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <div class="m-b-s">
+          <button class="w-full" mat-stroked-button (click)="loginFacebook()">
+            {{'LOGIN.LOGIN_WITH' | transloco:{value: 'Facebook'} }}
+          </button>
+        </div>
+      </section>
+
+      <!--Divider-->
+      <div class="flex ai-center m-y-m disabled">
+        <hr class="flex1">
+        <p class="p-x-s">{{'GENERAL.OR' | transloco}}</p>
+        <hr class="flex1">
+      </div>
+
+      <!--Regular login-->
+      <form [formGroup]="loginForm">
+        <mat-form-field class="w-full" appearance="outline">
+          <mat-label>{{'GENERAL.EMAIL' | transloco}}</mat-label>
+          <input
+            matInput
+            type="email"
+            formControlName="emailLogin"
+          />
+        </mat-form-field>
+        <mat-form-field class="w-full" appearance="outline">
+          <mat-label>{{'GENERAL.PASSWORD' | transloco}}</mat-label>
+          <input
+            matInput
+            #password
+            type="password"
+            formControlName="passwordLogin"
+          />
+        </mat-form-field>
+        <button
+          mat-flat-button
+          color="primary"
+          class="w-full"
+          [disabled]="loginForm.invalid"
+          [jpLoadClick]="loginEmail()">
+          {{'LOGIN.LOGIN' | transloco}}
+        </button>
+        <a routerLink="/trigger-password-reset" class="block ta-right fg-secondary fs-small">{{'LOGIN.FORGOT_PASSWORD' | transloco}}</a>
+      </form>
+
+    </mat-card>
+  </div>
+</section>
