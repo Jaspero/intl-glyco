@@ -25,9 +25,9 @@ import {InstanceOverviewContextService} from '../../services/instance-overview-c
 })
 export class InstanceOverviewComponent implements OnInit, AfterViewInit {
   constructor(
+    public ioc: InstanceOverviewContextService,
     private dbService: DbService,
     private state: StateService,
-    private ioc: InstanceOverviewContextService,
     private cdr: ChangeDetectorRef
   ) {}
 
