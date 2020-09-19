@@ -1,9 +1,12 @@
 {
   "targets": {
-    "jaspero-jms": {
+    "intl-glyco-cb2de": {
       "hosting": {
+        "website": [
+          "intl-glyco-cb2de"
+        ],
         "cms": [
-          "jaspero-jms"
+          "intl-glyco-cb2de-cms"
         ]
       }
     }

@@ -3,17 +3,38 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
-  "hosting": [{
-    "target": "cms",
-    "public": "public/cms",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }],
+  "hosting": [
+    {
+      "target": "cms",
+      "public": "client/dist/cms",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "headers": [{
+        "source": "/@(ngsw-worker.js|ngsw.json)",
+        "headers": [{
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }]
+      }]
+    },
+    {
+      "target": "website",
+      "public": "client/dist/website",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "headers": [{
+        "source": "/@(ngsw-worker.js|ngsw.json)",
+        "headers": [{
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }]
+      }]
+    }
+  ],
   "storage": {
     "rules": "storage.rules"
   }

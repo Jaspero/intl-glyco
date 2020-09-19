@@ -33,6 +33,8 @@
     "document-register-element": "1.14.6",
     "file-saver": "2.0.2",
     "firebase": "7.20.0",
+    "firebase-tools": "^8.10.0",
+    "g": "^2.0.1",
     "json-pointer": "0.6.0",
     "jsoneditor": "9.0.5",
     "lodash-es": "4.17.15",

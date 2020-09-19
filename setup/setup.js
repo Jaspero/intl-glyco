@@ -18,9 +18,17 @@ const COLLECTIONS = [
            * firebase dashboard.
            */
           {
-            email: 'test@test.com',
-            role: 'user'
+            email: 'sven.djanis@gmail.com',
+            role: 'admin'
           },
+          {
+            email: 'h.kolaric92@gmail.com',
+            role: 'admin'
+          },
+          {
+            email: 'filip.lauc93@gmail.com',
+            role: 'admin'
+          }
         ]
       },
       {
@@ -345,7 +353,7 @@ const serviceAccount = require('./serviceAccountKey.json');
  */
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://jaspero-jms.firebaseio.com'
+  databaseURL: 'https://intl-glyco.firebaseio.com'
 });
 
 async function exec() {
