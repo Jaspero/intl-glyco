@@ -10,7 +10,9 @@
     "lint:functions": "npm --prefix functions run lint",
     "lint": "npm run lint:client && npm run lint:functions",
     "deploy": "firebase deploy --only storage,firestore,functions:cms,hosting",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "start:website": "npm --prefix client run start:website",
+    "start:cms": "npm --prefix client run start:cms"
   },
   "author": {
     "name": "Jaspero Ltd",
