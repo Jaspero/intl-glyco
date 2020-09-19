@@ -16,9 +16,7 @@ jobs:
         run: |
           npm --prefix client ci
       - name: Build
-        run: |
-          echo export const ENV_CONFIG=$PUBLIC_CONFIG > client/projects/cms/src/env-config.ts
-          npm run build:cms
+        run: npm run build:cms
         env:
           PUBLIC_CONFIG: ${{ secrets.PUBLIC_CONFIG }}
       - name: Deploy to Firebase
