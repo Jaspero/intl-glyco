@@ -353,7 +353,7 @@ const serviceAccount = require('./serviceAccountKey.json');
  */
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://intl-glyco.firebaseio.com'
+  databaseURL: "https://intl-glyco-cb2de.firebaseio.com"
 });
 
 async function exec() {
