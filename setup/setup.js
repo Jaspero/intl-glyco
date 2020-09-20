@@ -135,9 +135,8 @@ const COLLECTIONS = [
     documents: [
       {
         id: 'test',
-        name: 'This is test announcements',
-        description: 'This is message example',
-        createdOn: Date.now()
+        title: 'This is test announcements',
+        content: 'This is message example',
       },
     ]
   },
@@ -428,22 +427,71 @@ const MODULES = [
           }
         },
         definitions: {
-          role: {
-            label: 'Role',
+          createdOn: {
+            label: 'Created On',
             component: {
-              type: 'select',
+              type: 'input',
               configuration: {
                 populate: {
-                  collection: 'roles'
+                  collection: 'input'
                 }
               }
             }
-          }
+          },
+          name: {
+            label: 'Name',
+            component: {
+              type: 'input',
+              configuration: {
+                populate: {
+                  collection: 'input'
+                }
+              }
+            }
+          },
+          email: {
+            label: 'Email',
+            component: {
+              type: 'input',
+              configuration: {
+                populate: {
+                  collection: 'input'
+                }
+              }
+            }
+          },
+          subject: {
+            label: 'Subject',
+            component: {
+              type: 'input',
+              configuration: {
+                populate: {
+                  collection: 'input'
+                }
+              }
+            }
+          },
+          message: {
+            label: 'Message',
+            component: {
+              type: 'text-area',
+              configuration: {
+                populate: {
+                  collection: 'text-area'
+                }
+              }
+            }
+          },
         },
         segments: [{
           type: 'empty',
           fields: [
-            '/role'
+            '/createdOn',
+            '/id',
+            '/name',
+            '/email',
+            '/message',
+            '/subject'
           ]
         }]
       },
@@ -532,7 +580,13 @@ const MODULES = [
         type: 'ID'
       },
       name: {
-        label: 'Name'
+        label: 'name',
+        component: {
+          type: 'input',
+          configuration: {
+            type: 'string'
+          }
+        }
       },
       email: {
         label: 'Email',
@@ -572,7 +626,137 @@ const MODULES = [
         }
       },
     }
-  }
+  },
+  {
+    id: 'announcements',
+    name: 'announcements',
+    description: 'announcements',
+    authorization: {
+      read: ['admin'],
+      write: ['admin']
+    },
+    layout: {
+      order: 0,
+      editTitleKey: 'name',
+      icon: 'supervised_user_circle',
+      filterModule: {
+        persist: true,
+        schema: {
+          properties: {
+            role: {
+              type: 'string'
+            }
+          }
+        },
+        definitions: {
+          title: {
+            label: 'Title',
+            component: {
+              type: 'input',
+              configuration: {
+                populate: {
+                  collection: 'input'
+                }
+              }
+            }
+          },
+          data: {
+            label: 'data',
+            component: {
+              type: 'text-area',
+              configuration: {
+                populate: {
+                  collection: 'text-area'
+                }
+              }
+            }
+          },
+        },
+        segments: [{
+          type: 'empty',
+          fields: [
+            '/id',
+            '/title',
+            '/data'
+          ]
+        }]
+      },
+      sort: {
+        active: 'id',
+        direction: 'desc'
+      },
+      instance: {
+        segments: [{
+          fields: [
+            '/id',
+            '/title',
+            '/data',
+          ]
+        }]
+      },
+      table: {
+        hideImport: true,
+        tableColumns: [
+          {
+            key: '/id',
+            label: 'Id',
+            sortable: true
+          },
+          {
+            key: '/title',
+            label: 'Name'
+          },
+        ],
+        actions: [
+          {
+            value: `it => '<jms-e-cp data-id="' + it.id + '"></jms-e-cp>'`
+          },
+          {
+            value: `it => '<jms-e-tus data-id="' + it.id + '"></jms-e-tus>'`
+          }
+        ]
+      },
+      overview: {
+        toolbar: ['<jms-e-user-add></jms-e-user-add>']
+      }
+    },
+    schema: {
+      properties: {
+        id: {
+          type: 'string'
+        },
+        title: {
+          type: 'string',
+        },
+        data: {
+          type: 'string'
+        }
+      },
+      definitions: {
+        id: {
+          type: 'ID'
+        },
+        title: {
+          label: 'title',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+        data: {
+          label: 'Data',
+          component: {
+            type: 'textarea',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+      }
+    }
+  },
 ];
 
 const admin = require('firebase-admin');
