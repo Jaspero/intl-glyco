@@ -1,10 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../../shared/shared.module';
-import {EventsComponent} from './events.component';
 import {EventComponent} from './components/event/event.component';
+import {EventsComponent} from './events.component';
 import {EventGuard} from './guards/event.guard';
-import {PaginationComponent} from '../../shared/components/pagination/pagination.component';
 
 @NgModule({
   imports: [
@@ -17,15 +16,14 @@ import {PaginationComponent} from '../../shared/components/pagination/pagination
       {
         path: ':id',
         component: EventComponent,
-        // canActivate: [EventGuard]
+        canActivate: [EventGuard]
       }
     ])
   ],
-  // providers: [EventGuard],
+  providers: [EventGuard],
   declarations: [
     EventsComponent,
-    EventComponent,
-    PaginationComponent
+    EventComponent
   ]
 })
 export class EventsModule { }

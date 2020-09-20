@@ -21,15 +21,15 @@ export class PageGuard implements CanActivate {
   ) {
 
     const name = next.params ? next.params.name : '/';
-    console.log('name', name);
     if (this.state.pages.includes(name)) {
       return this.afs
-        .collection(name)
+        .collection(FirestoreCollection.Pages)
+        .doc(name)
         .valueChanges()
         .pipe(
           switchMap(data => {
-            if (data.length) {
-              this.state.currentPage$.next(data[0]);
+            if (data) {
+              this.state.currentPage$.next(data);
               return of(true);
             } else {
               if (name && name !== '/') {
