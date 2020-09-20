@@ -1,0 +1,53 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h3>Contact information</h3>
+  <label for="name" class="layout-block">
+    <span>Name</span>
+    <input type="text" id="name" name="name" placeholder="John Doe" formControlName="name">
+  </label>
+
+  <div class="fieldgroup--layout-split">
+    <label for="email" class="layout-block">
+      <span>Email</span>
+      <input type="text" id="email" name="email" placeholder="John@Doe.com" formControlName="email">
+    </label>
+    <label for="phone" class="layout-block">
+      <span>Phone</span>
+      <input type="text" id="phone" name="phone" placeholder="123-456-789" formControlName="phone">
+    </label>
+  </div>
+
+  <h3>Location</h3>
+  <label for="address" class="layout-block">
+    <span>Address</span>
+    <input type="text" id="address" name="address" placeholder="Lorem Av. 123" formControlName="address">
+  </label>
+
+  <div class="fieldgroup--layout-split">
+    <label for="city" class="layout-block">
+      <span>City</span>
+      <input type="text" id="city" name="city" placeholder="Osijek" formControlName="city">
+    </label>
+    <label for="postalCode" class="layout-block">
+      <span>Postal code</span>
+      <input type="text" id="postalCode" name="postalCode" placeholder="31000" formControlName="postalCode">
+    </label>
+    <label for="country" class="layout-block">
+      <span>Country</span>
+      <input type="text" id="country" name="country" placeholder="Croatia" formControlName="country">
+    </label>
+  </div>
+
+  <h3>Additional</h3>
+  <div class="fieldgroup--layout-split">
+    <label for="institution" class="layout-block">
+      <span>Institution</span>
+      <input type="text" id="institution" name="institution" placeholder="" formControlName="institution">
+    </label>
+    <label for="department" class="layout-block">
+      <span>Department</span>
+      <input type="text" id="department" name="department" placeholder="" formControlName="department">
+    </label>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid" class="btn--primary form-submit" [jpLoadClick]="submit()">>Send</button>
+</form>

@@ -1,0 +1,193 @@
+/*==================================================
+
+  Buttons
+
+==================================================*/
+
+
+/*
+ * Shared style
+ */
+
+[class*="btn"] {
+  display         : inline-block;
+  cursor          : pointer;
+  border          : none;
+  outline         : none;
+  font-size       : 1.4rem;
+  font-weight     : 400;
+  font-family     : sans-serif;
+  letter-spacing  : .1rem;
+  user-select     : none;
+  transition      : .2s;
+
+  span, svg, img { vertical-align: middle; }
+
+}
+
+
+/*
+ * Primary
+ */
+
+[class*="btn"][class*="--primary"] {
+  padding       : 1rem 2rem;
+  background    : $blue;
+  border-radius : 4px;
+  color         : white;
+  fill          : white;
+  text-transform: uppercase;
+
+  &:hover, &:focus {
+    background: #1879ad;
+  }
+
+  &:active {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.3);
+  }
+
+  &:disabled {
+    cursor      : not-allowed;
+    box-shadow  : none;
+    color       : #aaa;
+    fill        : #aaa;
+    background  : #eee;
+  }
+
+  &.form-submit { margin: 4rem 0; }
+
+}
+
+
+/*
+ * Secondary
+ */
+
+[class*="btn"][class*="--secondary"] {
+  clip-path: polygon(0% 0%, 100% 0%, 75% 80%, 0% 100%);
+  padding     : 2rem 8rem 3rem 2rem;
+  background  : rgba(51,131,202,.6);
+  color       : white;
+  fill        : white;
+
+  &:hover, &:focus {
+    background  : $blue;
+  }
+
+  &:active {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.3);
+  }
+
+  &:disabled {
+    cursor      : not-allowed;
+    box-shadow  : none;
+    color       : #aaa;
+    fill        : #aaa;
+    background  : #eee;
+  }
+
+}
+
+
+/*
+ * Regular
+ */
+
+[class*="btn"][class*="--regular"] {
+  padding       : 1rem 2rem;
+  background    : transparent;
+  border        : 1px solid #ccc;
+  border-radius : 4px;
+  font-weight   : bolder;
+  color         : #666;
+  fill          : white;
+  text-transform: uppercase;
+
+  &:hover, &:focus {
+    background: #eee;
+  }
+
+  &:active {
+    background: #ddd;
+  }
+
+  &:disabled {
+    cursor      : not-allowed;
+    box-shadow  : none;
+    color       : #aaa;
+    fill        : #aaa;
+    background  : #eee;
+  }
+
+  &.form-submit { margin: 4rem 0; }
+
+}
+
+
+/*
+ * Contain
+ */
+
+[class*="btn"][class*="--contain"] {
+  padding       : .8rem;
+  background    : transparent;
+  color         : black;
+  fill          : black;
+}
+
+
+/*
+ * States
+ */
+
+[class*="btn"].loading,
+[class*="btn"].error {
+  pointer-events  : none;
+  position        : relative;
+  color           : transparent;
+
+  span, svg, img { opacity: 0; }
+
+}
+
+[class*="btn"].loading {
+  background: #eee;
+
+  &:after {
+    content       : '';
+    display       : block;
+    position      : absolute;
+    top           : 50%;
+    left          : 50%;
+    height        : 1.8rem;
+    width         : 1.8rem;
+    border-radius : 50%;
+    border-top    : .2rem solid black;
+    border-right  : .2rem solid black;
+    border-bottom : .2rem solid transparent;
+    border-left   : .2rem solid transparent;
+    animation     : progress-animation .75s linear infinite;
+
+    @keyframes progress-animation {
+      0%    { transform: translate(-50%,-50%) rotate(0deg); }
+      100%  { transform: translate(-50%,-50%) rotate(360deg); }
+    }
+
+  }
+
+}
+
+[class*="btn"].error {
+  background: rgba(200,40,40,.6);
+
+  &:after {
+    content   : 'Error';
+    display   : block;
+    position  : absolute;
+    top       : 50%;
+    left      : 50%;
+    color     : white;
+    transform : translate(-50%,-50%);
+  }
+
+}

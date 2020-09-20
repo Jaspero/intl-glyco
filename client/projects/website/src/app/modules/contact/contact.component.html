@@ -1,0 +1,36 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h3>Contact us</h3>
+
+  <div class="fieldgroup--layout-split">
+    <label for="name" class="layout-block">
+      <span>Name</span>
+      <input type="text" id="name" name="name" placeholder="John Doe" formControlName="name">
+    </label>
+    <label for="email" class="layout-block">
+      <span>Email</span>
+      <input type="email" id="email" name="email" placeholder="John@Doe.com" formControlName="email">
+    </label>
+  </div>
+
+  <label for="subject" class="layout-block">
+    <span>What is your message subject?</span>
+    <select id="subject" name="subject" formControlName="subject">
+      <option value="" disabled>Select subject</option>
+      <option value="General Inquiry">General Inquiry</option>
+      <option value="Sending a message">Sending a message</option>
+      <option value="Events">Events</option>
+      <option value="Announcement">Announcement</option>
+      <option value="Report a problem">Report a problem</option>
+      <option value="Job Posting">Job Posting</option>
+      <option value="Membership Inquiry">Membership Inquiry</option>
+      <option value="Other">Other</option>
+    </select>
+  </label>
+
+  <label for="message" class="layout-block">
+    <span>Message</span>
+    <textarea id="message" name="message" rows="4" formControlName="message"></textarea>
+  </label>
+
+  <button type="submit" class="btn--primary form-submit" [disabled]="form.invalid" [jpLoadClick]="submit()">Send</button>
+</form>

@@ -1,0 +1,134 @@
+.cal-month-view {
+  font-size: 1rem;
+  .cal-header {
+    text-align: center;
+    font-weight: bolder;
+  }
+
+  .cal-cell-row:hover {
+    background-color: #fafafa;
+  }
+
+  .cal-header .cal-cell {
+    padding: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+  }
+
+  .cal-cell-row .cal-cell:hover,
+  .cal-cell.cal-has-events.cal-open {
+    background-color: #ededed;
+  }
+
+  .cal-days {
+    border: 1px solid #e1e1e1;
+    border-bottom: 0;
+  }
+
+  .cal-cell-top {
+    min-height: 30px;
+    flex: 1;
+  }
+
+  .cal-cell-row {
+    display: flex;
+  }
+
+  .cal-cell {
+    float: left;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cal-day-cell {
+    min-height: 30px;
+  }
+
+  .cal-day-cell:not(:last-child) {
+    border-right: 1px solid #e1e1e1;
+  }
+
+  .cal-days .cal-cell-row {
+    border-bottom: 1px solid #e1e1e1;
+  }
+
+  .cal-day-badge {
+    display: none;
+  }
+
+  .cal-day-number {
+    font-weight: 400;
+    opacity: 0.5;
+    float: right;
+    margin: .5rem 1rem .5rem 0;
+  }
+
+  .cal-events {
+    flex: 1;
+    align-items: flex-end;
+    margin: 3px;
+    line-height: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .cal-event {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 2px;
+  }
+
+  .cal-day-cell.cal-in-month.cal-has-events {
+    cursor: pointer;
+  }
+
+  .cal-day-cell.cal-out-month .cal-day-number {
+    opacity: 0.1;
+    cursor: default;
+  }
+
+  .cal-day-cell.cal-weekend .cal-day-number {
+    color: darkred;
+  }
+
+  .cal-day-cell.cal-today {
+    background-color: #e8fde7;
+  }
+
+  .cal-day-cell.cal-today .cal-day-number {
+    font-size: 1.2rem;
+  }
+
+  .cal-day-cell.cal-drag-over {
+    background-color: darken(#ededed, 5%) !important;
+  }
+
+  .cal-open-day-events {
+    padding: 15px;
+    color: white;
+    background-color: #555;
+    box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .cal-open-day-events .cal-event {
+    position: relative;
+    top: 2px;
+  }
+
+  .cal-event-title {
+    color: white;
+  }
+
+  .cal-out-month {
+    .cal-day-badge,
+    .cal-event {
+      opacity: 0.3;
+    }
+  }
+}

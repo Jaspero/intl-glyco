@@ -1,0 +1,7 @@
+<h1>ANNOUNCEMENTS</h1>
+<div class="announcement" *ngFor="let item of items$ | async">
+  <h2>{{item.title}}</h2>
+  <div [innerHtml]="item.content | sanitize"></div>
+</div>
+<div class="loading" *ngIf="loading$ | async"></div>
+

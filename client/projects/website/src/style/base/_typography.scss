@@ -1,0 +1,107 @@
+/*==================================================
+
+  Typography
+
+==================================================*/
+
+
+/*
+ * Base
+ */
+
+html {
+  font-family : Verdana, sans-serif;
+  font-size   : 62.5%;
+  line-height : 1.5;
+}
+
+body { font-size: 1.4rem; }
+
+
+/*
+ * Resets
+ */
+
+p,
+h1,
+h2 {
+  margin: 1rem 0 2rem;
+  font-weight: normal;
+}
+
+a {
+  cursor          : pointer;
+  color           : unset;
+  text-decoration : none;
+}
+
+hr {
+  display     : block;
+  width       : 100%;
+  height      : .1rem;
+  border      : 0;
+  border-top  : .1rem solid #ccc;
+  margin      : .4rem 0;
+  padding     : 0;
+}
+
+
+/*
+ * Headings
+ */
+
+h1 {
+  font-size: 2.8rem;
+  padding: 1rem 0;
+  border-bottom: 5px solid $blue-lighter;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #5f7194;
+}
+h2 {
+  font-size: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid $light;
+  text-transform: uppercase;
+  color: $blue-lighter;
+}
+
+h3 {
+  margin: 0;
+  padding: 5rem 0 .5rem;
+  border-bottom: 1px solid $light;
+  font-weight: normal;
+  font-size: 1.6rem;
+  color: $blue-lighter;
+}
+h4 {
+  margin: 0;
+  padding: 1rem;
+  border-radius: 3px;
+  background: linear-gradient(to bottom right,#fff,#f2f2f2);;
+  font-weight: bolder;
+  font-size: 1.6rem;
+  color: #878787;
+}
+
+
+
+/*
+ * Paragraph
+ */
+
+p {
+  font-size: 1.4rem;
+  color: #807e7e;
+}
+
+
+/*
+ * List
+ */
+
+ol, ul {
+  color: #807e7e;
+}
+
+.link { color: $blue; }
