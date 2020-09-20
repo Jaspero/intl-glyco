@@ -427,7 +427,7 @@ const MODULES = [
         type: 'ID'
       },
       name: {
-        label: 'name',
+        label: 'Name',
         component: {
           type: 'input',
           configuration: {
@@ -476,8 +476,8 @@ const MODULES = [
   },
   {
     id: 'announcements',
-    name: 'announcements',
-    description: 'announcements',
+    name: 'Announcements',
+    description: 'Announcements',
     authorization: {
       read: ['admin'],
       write: ['admin']
@@ -528,7 +528,7 @@ const MODULES = [
           type: 'ID'
         },
         title: {
-          label: 'title',
+          label: 'Title',
           component: {
             type: 'input',
             configuration: {
@@ -537,7 +537,7 @@ const MODULES = [
           }
         },
         content: {
-          label: 'content',
+          label: 'Content',
           component: {
             type: 'textarea',
             configuration: {
@@ -550,8 +550,8 @@ const MODULES = [
   },
   {
     id: 'events',
-    name: 'events',
-    description: 'events',
+    name: 'Events',
+    description: 'Events',
     authorization: {
       read: ['admin'],
       write: ['admin']
@@ -622,7 +622,7 @@ const MODULES = [
           type: 'ID'
         },
         title: {
-          label: 'title',
+          label: 'Title',
           component: {
             type: 'input',
             configuration: {
@@ -631,7 +631,7 @@ const MODULES = [
           }
         },
         description: {
-          label: 'description',
+          label: 'Description',
           component: {
             type: 'textarea',
             configuration: {
@@ -640,7 +640,7 @@ const MODULES = [
           }
         },
         content: {
-          label: 'content',
+          label: 'Content',
           component: {
             type: 'textarea',
             configuration: {
@@ -659,7 +659,7 @@ const MODULES = [
           }
         },
         to: {
-          label: 'to',
+          label: 'To',
           component: {
             type: 'date',
             configuration: {
@@ -668,7 +668,7 @@ const MODULES = [
           }
         },
         from: {
-          label: 'from',
+          label: 'From',
           component: {
             type: 'date',
             configuration: {
@@ -722,11 +722,11 @@ const MODULES = [
           },
           {
             key: '/email',
-            label: 'email'
+            label: 'Email'
           },
           {
             key: '/phone',
-            label: 'phone'
+            label: 'Phone'
           },
         ],
         actions: [
@@ -768,7 +768,7 @@ const MODULES = [
           type: 'ID'
         },
         email: {
-          label: 'email',
+          label: 'Email',
           component: {
             type: 'input',
             configuration: {
@@ -777,7 +777,7 @@ const MODULES = [
           }
         },
         name: {
-          label: 'name',
+          label: 'Name',
           component: {
             type: 'input',
             configuration: {
@@ -786,7 +786,7 @@ const MODULES = [
           }
         },
         phone: {
-          label: 'email',
+          label: 'Phone',
           component: {
             type: 'input',
             configuration: {
@@ -795,7 +795,7 @@ const MODULES = [
           }
         },
         address: {
-          label: 'address',
+          label: 'Address',
           component: {
             type: 'input',
             configuration: {
@@ -804,7 +804,7 @@ const MODULES = [
           }
         },
         city: {
-          label: 'city',
+          label: 'City',
           component: {
             type: 'input',
             configuration: {
@@ -813,7 +813,7 @@ const MODULES = [
           }
         },
         postalCode: {
-          label: 'postalCode',
+          label: 'Postal Code',
           component: {
             type: 'input',
             configuration: {
@@ -822,7 +822,7 @@ const MODULES = [
           }
         },
         country: {
-          label: 'country',
+          label: 'Country',
           component: {
             type: 'input',
             configuration: {
@@ -831,7 +831,7 @@ const MODULES = [
           }
         },
         institution: {
-          label: 'institution',
+          label: 'Institution',
           component: {
             type: 'input',
             configuration: {
@@ -840,7 +840,7 @@ const MODULES = [
           }
         },
         department: {
-          label: 'department',
+          label: 'Department',
           component: {
             type: 'input',
             configuration: {
@@ -908,7 +908,7 @@ const MODULES = [
           type: 'ID'
         },
         title: {
-          label: 'title',
+          label: 'Title',
           component: {
             type: 'input',
             configuration: {
@@ -926,7 +926,7 @@ const MODULES = [
           }
         },
         content: {
-          label: 'content',
+          label: 'Content',
           component: {
             type: 'textarea',
             configuration: {
