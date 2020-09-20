@@ -20,7 +20,8 @@ export class PageGuard implements CanActivate {
     state: RouterStateSnapshot
   ) {
 
-    const name = next.params ? next.params.name : '/';
+    const name = next.params && next.params.name ? next.params.name : 'welcome';
+
     if (this.state.pages.includes(name)) {
       return this.afs
         .collection(FirestoreCollection.Pages)
@@ -28,21 +29,17 @@ export class PageGuard implements CanActivate {
         .valueChanges()
         .pipe(
           switchMap(data => {
-            if (data) {
+
+            if (data && data !== 'welcome') {
               this.state.currentPage$.next(data);
               return of(true);
             } else {
-              if (name && name !== '/') {
-                this.router.navigate(['/']);
-              }
+              this.router.navigate(['/']);
               return of(false);
             }
           }),
           catchError(() => {
-            if (name && name !== '/') {
-              this.router.navigate(['/']);
-            }
-
+            this.router.navigate(['/']);
             return of(true);
           })
         );

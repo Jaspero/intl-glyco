@@ -6,6 +6,7 @@ export class StateService {
   constructor() { }
 
   pages = [
+    'welcome',
     'officers',
     'national-representatives',
     'procedure',
