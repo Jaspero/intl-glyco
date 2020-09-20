@@ -15,7 +15,7 @@ export class AnnouncementsComponent implements OnInit {
     private afs: AngularFirestore
   ) { }
 
-  items$: Observable;
+  items$: Observable<any>;
 
   ngOnInit() {
     this.items$ = this.afs

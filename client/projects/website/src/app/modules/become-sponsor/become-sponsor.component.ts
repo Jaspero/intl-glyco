@@ -34,7 +34,7 @@ export class BecomeSponsorComponent implements OnInit {
   submit() {
     return () =>
       this.afs
-        .collection(FirestoreCollection.Sponsors)
+        .collection(FirestoreCollection.SponsorRequests)
         .doc(this.afs.createId())
         .set({
           createdOn: Date.now(),
