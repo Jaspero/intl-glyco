@@ -101,6 +101,69 @@ const COLLECTIONS = [
       }
     ]
   },
+  {
+    name: 'sponsor-requests',
+    documents: [
+      {
+        id: 'test',
+        createdOn: Date.now(),
+        email: 'test@test.com',
+        name: 'test',
+        phone: 123,
+        address: 'sjemba',
+        city: 'os',
+        postalCode: 31000,
+        country: 'cr',
+        institution: 'test',
+        department: 'leader'
+      },
+    ]
+  },
+  {
+    name: 'events',
+    documents: [
+      {
+        id: 'test',
+        name: 'test@test.com',
+        message: 'This is message example',
+        createdOn: Date.now()
+      },
+    ]
+  },
+  {
+    name: 'announcements',
+    documents: [
+      {
+        id: 'test',
+        name: 'This is test announcements',
+        description: 'This is message example',
+        createdOn: Date.now()
+      },
+    ]
+  },
+  {
+    name: 'contact-us',
+    documents: [
+      {
+        id: 'test',
+        name: 'This is test contact-us',
+        email: 'test@test.com',
+        subject: 'test',
+        message: 'test test test',
+        createdOn: Date.now()
+      },
+    ]
+  },
+  {
+    name: 'pages',
+    documents: [
+      {
+        id: 'page',
+        title: 'test title',
+        content: 'content test',
+      },
+    ]
+  },
 ];
 
 const MODULES = [
@@ -341,6 +404,173 @@ const MODULES = [
         columnsDesktop: 4,
         columnsMobile: 12
       }
+    }
+  },
+  {
+    id: 'contact-us',
+    name: 'Contact us',
+    description: 'Contact us',
+    authorization: {
+      read: ['admin'],
+      write: ['admin']
+    },
+    layout: {
+      order: 0,
+      editTitleKey: 'name',
+      icon: 'supervised_user_circle',
+      filterModule: {
+        persist: true,
+        schema: {
+          properties: {
+            role: {
+              type: 'string'
+            }
+          }
+        },
+        definitions: {
+          role: {
+            label: 'Role',
+            component: {
+              type: 'select',
+              configuration: {
+                populate: {
+                  collection: 'roles'
+                }
+              }
+            }
+          }
+        },
+        segments: [{
+          type: 'empty',
+          fields: [
+            '/role'
+          ]
+        }]
+      },
+      sort: {
+        active: 'createdOn',
+        direction: 'desc'
+      },
+      instance: {
+        segments: [{
+          fields: [
+            '/createdOn',
+            '/id',
+            '/name',
+            '/email',
+            '/message',
+            '/subject'
+          ]
+        }]
+      },
+      table: {
+        hideImport: true,
+        tableColumns: [
+          {
+            key: '/createdOn',
+            label: 'Created On',
+            pipe: ['date'],
+            sortable: true
+          },
+          {
+            key: '/name',
+            label: 'Name'
+          },
+          {
+            key: '/email',
+            label: 'Email'
+          },
+          {
+            key: '/message',
+            label: 'Message',
+          },
+          {
+            key: '/subject',
+            label: 'Subject',
+          }
+        ],
+        actions: [
+          {
+            value: `it => '<jms-e-tpr data-email="' + it.data.email + '"></jms-e-tpr>'`
+          },
+          {
+            value: `it => '<jms-e-cp data-id="' + it.id + '"></jms-e-cp>'`
+          },
+          {
+            value: `it => '<jms-e-tus data-id="' + it.id + '"></jms-e-tus>'`
+          }
+        ]
+      },
+      overview: {
+        toolbar: ['<jms-e-user-add></jms-e-user-add>']
+      }
+    },
+    schema: {
+      properties: {
+        id: {
+          type: 'string'
+        },
+        name: {
+          type: 'string',
+        },
+        email: {
+          type: 'string'
+        },
+        message: {
+          type: 'string'
+        },
+        createdOn: {
+          type: 'number'
+        },
+        subject: {
+          type: 'string'
+        }
+      }
+    },
+    definitions: {
+      id: {
+        type: 'ID'
+      },
+      name: {
+        label: 'Name'
+      },
+      email: {
+        label: 'Email',
+        component: {
+          type: 'input',
+          configuration: {
+            type: 'email'
+          }
+        }
+      },
+      subject: {
+        label: 'Subject',
+        component: {
+          type: 'input',
+          configuration: {
+            type: 'string'
+          }
+        }
+      },
+      createdOn: {
+        label: 'Created On',
+        formatOnLoad: '(value) => value || Date.now()',
+        component: {
+          type: 'date',
+          configuration: {
+            format: 'number'
+          }
+        }
+      },
+      message: {
+        label: 'Message',
+        component: {
+          type: 'textarea',
+          configuration: {
+            type: 'email'
+          }
+        }
+      },
     }
   }
 ];
