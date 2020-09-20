@@ -1,2 +1,6 @@
-<jaspero-event-item *ngFor="let item of results" [event]="item"></jaspero-event-item>
-<jaspero-pagination [total]="total" (pageChange)="onPageChange($event)"></jaspero-pagination>
+<ng-container *ngFor="let event of events$ | async">
+  <h4 (click)="redirectTo(event.id)">{{event.title}}</h4>
+  <p class="event_date"><span>{{event.from | date}}</span> <ng-container *ngIf="event.to">- <span>{{event.to | date}}</span></ng-container></p>
+  <div [innerHtml]="event.description | sanitize"></div>
+  <button class="btn--regular" type="button" (click)="redirectTo(event.id)">Read More</button>
+</ng-container>

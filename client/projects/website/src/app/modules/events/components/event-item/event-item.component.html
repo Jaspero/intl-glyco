@@ -1,4 +1,0 @@
-<h4 (click)="redirectTo(event.readMore, event._id)">{{event.title}}</h4>
-<p class="event_date"><span>{{event.from | date}}</span> <ng-container *ngIf="event.to">- <span>{{event.to | date}}</span></ng-container></p>
-<div [innerHtml]="event.description | sanitize"></div>
-<button class="btn--regular" type="button" (click)="redirectTo(event.readMore, event._id)">Read More</button>

@@ -1,35 +1,39 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {of} from 'rxjs';
-import {catchError, switchMap} from 'rxjs/operators';
+import {catchError, switchMap, tap} from 'rxjs/operators';
+import {FirestoreCollection} from '../../../shared/enums/firestore-collection.enum';
 import {StateService} from '../../../shared/services/state/state.service';
 
 @Injectable()
 export class EventGuard implements CanActivate {
   constructor(
-    private _http: HttpClient,
-    private _state: StateService,
-    private _router: Router
+    private afs: AngularFirestore,
+    private state: StateService,
+    private router: Router
   ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
 
-    return this._http.get(`event/${next.params.id}`)
+    return this.afs.collection(FirestoreCollection.Events)
+      .doc(next.params.id)
+      .valueChanges()
       .pipe(
         switchMap(data => {
-          if (data['data']) {
-            this._state.event$.next(data['data']);
+          if (data) {
+            this.state.event$.next(data);
             return of(true);
           } else {
-            this._router.navigate(['/events']);
+            this.router.navigate(['/events']);
             return of(false);
           }
         }),
         catchError(() => {
-          this._router.navigate(['/events']);
+          this.router.navigate(['/events']);
           return of(true);
         })
       );

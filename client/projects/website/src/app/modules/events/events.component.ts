@@ -1,5 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {FirestoreCollection} from '../../shared/enums/firestore-collection.enum';
 
 @Component({
   selector: 'jaspero-events',
@@ -9,31 +13,27 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EventsComponent implements OnInit {
   constructor(
-    private _http: HttpClient,
-    private _cdr: ChangeDetectorRef
+    private afs: AngularFirestore,
+    private router: Router
   ) { }
 
-  total = 0;
-  current = 0;
-  totalItems = 0;
-  results = [];
+  events$: Observable<any>;
 
   ngOnInit() {
-   // this.getItems({current: this.current});
+    this.events$ = this.afs
+      .collection(FirestoreCollection.Events)
+      .snapshotChanges()
+      .pipe(
+        map(events =>
+          events.map(event => ({
+            id: event.payload.doc.id,
+            ...(event.payload.doc.data() as any)
+          }))
+        )
+      );
   }
-  //
-  // getItems(data) {
-  //   this._http.post('event/paginated', data).subscribe((res: any) => {
-  //     this.results = res.data.results
-  //       .sort((a, b) => new Date(b.from).getTime() - new Date(a.from).getTime());
-  //     this.current = res.data.current;
-  //     this.total = res.data.total;
-  //     this.totalItems = res.data.totalItems;
-  //     this._cdr.markForCheck();
-  //   });
-  // }
-  //
-  // onPageChange(event) {
-  //   this.getItems({current: event, size: 5});
-  // }
+
+  redirectTo(id) {
+    this.router.navigate([`events/${id}`]);
+  }
 }
