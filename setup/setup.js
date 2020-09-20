@@ -181,35 +181,7 @@ const MODULES = [
       order: 0,
       editTitleKey: 'name',
       icon: 'supervised_user_circle',
-      filterModule: {
-        persist: true,
-        schema: {
-          properties: {
-            role: {
-              type: 'string'
-            }
-          }
-        },
-        definitions: {
-          role: {
-            label: 'Role',
-            component: {
-              type: 'select',
-              configuration: {
-                populate: {
-                  collection: 'roles'
-                }
-              }
-            }
-          }
-        },
-        segments: [{
-          type: 'empty',
-          fields: [
-            '/role'
-          ]
-        }]
-      },
+      filterModule: {},
       sort: {
         active: 'createdOn',
         direction: 'desc'
@@ -420,84 +392,7 @@ const MODULES = [
       order: 0,
       editTitleKey: 'name',
       icon: 'supervised_user_circle',
-      filterModule: {
-        persist: true,
-        schema: {
-          properties: {
-            role: {
-              type: 'string'
-            }
-          }
-        },
-        definitions: {
-          createdOn: {
-            label: 'Created On',
-            component: {
-              type: 'input',
-              configuration: {
-                populate: {
-                  collection: 'input'
-                }
-              }
-            }
-          },
-          name: {
-            label: 'Name',
-            component: {
-              type: 'input',
-              configuration: {
-                populate: {
-                  collection: 'input'
-                }
-              }
-            }
-          },
-          email: {
-            label: 'Email',
-            component: {
-              type: 'input',
-              configuration: {
-                populate: {
-                  collection: 'input'
-                }
-              }
-            }
-          },
-          subject: {
-            label: 'Subject',
-            component: {
-              type: 'input',
-              configuration: {
-                populate: {
-                  collection: 'input'
-                }
-              }
-            }
-          },
-          message: {
-            label: 'Message',
-            component: {
-              type: 'text-area',
-              configuration: {
-                populate: {
-                  collection: 'text-area'
-                }
-              }
-            }
-          },
-        },
-        segments: [{
-          type: 'empty',
-          fields: [
-            '/createdOn',
-            '/id',
-            '/name',
-            '/email',
-            '/message',
-            '/subject'
-          ]
-        }]
-      },
+      filterModule: {},
       sort: {
         active: 'createdOn',
         direction: 'desc'
@@ -532,10 +427,6 @@ const MODULES = [
             label: 'Email'
           },
           {
-            key: '/message',
-            label: 'Message',
-          },
-          {
             key: '/subject',
             label: 'Subject',
           }
@@ -552,9 +443,6 @@ const MODULES = [
           }
         ]
       },
-      overview: {
-        toolbar: ['<jms-e-user-add></jms-e-user-add>']
-      }
     },
     schema: {
       properties: {
@@ -642,48 +530,7 @@ const MODULES = [
       order: 0,
       editTitleKey: 'name',
       icon: 'supervised_user_circle',
-      filterModule: {
-        persist: true,
-        schema: {
-          properties: {
-            role: {
-              type: 'string'
-            }
-          }
-        },
-        definitions: {
-          title: {
-            label: 'Title',
-            component: {
-              type: 'input',
-              configuration: {
-                populate: {
-                  collection: 'input'
-                }
-              }
-            }
-          },
-          data: {
-            label: 'data',
-            component: {
-              type: 'text-area',
-              configuration: {
-                populate: {
-                  collection: 'text-area'
-                }
-              }
-            }
-          },
-        },
-        segments: [{
-          type: 'empty',
-          fields: [
-            '/id',
-            '/title',
-            '/data'
-          ]
-        }]
-      },
+      filterModule: {},
       sort: {
         active: 'id',
         direction: 'desc'
@@ -719,9 +566,6 @@ const MODULES = [
           }
         ]
       },
-      overview: {
-        toolbar: ['<jms-e-user-add></jms-e-user-add>']
-      }
     },
     schema: {
       properties: {
@@ -772,48 +616,7 @@ const MODULES = [
       order: 0,
       editTitleKey: 'name',
       icon: 'supervised_user_circle',
-      filterModule: {
-        persist: true,
-        schema: {
-          properties: {
-            role: {
-              type: 'string'
-            }
-          }
-        },
-        definitions: {
-          title: {
-            label: 'Title',
-            component: {
-              type: 'input',
-              configuration: {
-                populate: {
-                  collection: 'input'
-                }
-              }
-            }
-          },
-          data: {
-            label: 'data',
-            component: {
-              type: 'text-area',
-              configuration: {
-                populate: {
-                  collection: 'text-area'
-                }
-              }
-            }
-          },
-        },
-        segments: [{
-          type: 'empty',
-          fields: [
-            '/id',
-            '/title',
-            '/data'
-          ]
-        }]
-      },
+      filterModule: {},
       sort: {
         active: 'id',
         direction: 'desc'
@@ -823,7 +626,11 @@ const MODULES = [
           fields: [
             '/id',
             '/title',
-            '/data',
+            '/createdOn',
+            '/from',
+            '/to',
+            '/description',
+            '/content',
           ]
         }]
       },
@@ -837,7 +644,11 @@ const MODULES = [
           },
           {
             key: '/title',
-            label: 'Name'
+            label: 'Title'
+          },
+          {
+            key: '/createdOn',
+            label: 'Created On'
           },
         ],
         actions: [
@@ -849,9 +660,6 @@ const MODULES = [
           }
         ]
       },
-      overview: {
-        toolbar: ['<jms-e-user-add></jms-e-user-add>']
-      }
     },
     schema: {
       properties: {
@@ -951,72 +759,7 @@ const MODULES = [
       order: 0,
       editTitleKey: 'name',
       icon: 'supervised_user_circle',
-      filterModule: {
-        persist: true,
-        schema: {
-          properties: {
-            email: {
-              type: 'string'
-            },
-            name: {
-              type: 'string'
-            },
-            phone: {
-              type: 'number'
-            },
-            address: {
-              type: 'string'
-            },
-            city: {
-              type: 'string'
-            },
-            postalCode: {
-              type: 'string'
-            },
-            country: {
-              type: 'string'
-            },
-            institution: {
-              type: 'string'
-            },
-            department: {
-              type: 'string'
-            },
-          }
-        },
-        definitions: {
-          email: {
-            label: 'Email',
-            component: {
-              type: 'input',
-              configuration: {
-                populate: {
-                  collection: 'input'
-                }
-              }
-            }
-          },
-          name: {
-            label: 'Name',
-            component: {
-              type: 'input',
-              configuration: {
-                populate: {
-                  collection: 'input'
-                }
-              }
-            }
-          },
-        },
-        segments: [{
-          type: 'empty',
-          fields: [
-            '/id',
-            '/title',
-            '/data'
-          ]
-        }]
-      },
+      filterModule: {},
       sort: {
         active: 'id',
         direction: 'desc'
@@ -1025,8 +768,16 @@ const MODULES = [
         segments: [{
           fields: [
             '/id',
-            '/title',
             '/data',
+            '/email',
+            '/name',
+            '/phone',
+            '/address',
+            '/city',
+            '/postalCode',
+            '/country',
+            '/institution',
+            '/department',
           ]
         }]
       },
@@ -1039,8 +790,12 @@ const MODULES = [
             sortable: true
           },
           {
-            key: '/title',
-            label: 'Name'
+            key: '/email',
+            label: 'email'
+          },
+          {
+            key: '/phone',
+            label: 'phone'
           },
         ],
         actions: [
@@ -1052,9 +807,6 @@ const MODULES = [
           }
         ]
       },
-      overview: {
-        toolbar: ['<jms-e-user-add></jms-e-user-add>']
-      }
     },
     schema: {
       properties: {
