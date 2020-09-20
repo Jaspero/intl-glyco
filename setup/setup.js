@@ -1048,6 +1048,12 @@ const MODULES = [
         content: {
           type: 'string',
         },
+        title: {
+          type: 'string',
+        },
+        welcome: {
+          type: 'string',
+        },
       },
       definitions: {
         id: {
@@ -1055,6 +1061,15 @@ const MODULES = [
         },
         title: {
           label: 'title',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+        welcome: {
+          label: 'Welcome',
           component: {
             type: 'input',
             configuration: {
