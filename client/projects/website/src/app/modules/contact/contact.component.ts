@@ -17,6 +17,16 @@ export class ContactComponent implements OnInit {
   ) { }
 
   form: FormGroup;
+  options = [
+    'General Inquiry',
+    'Sending a message',
+    'Events',
+    'Announcement',
+    'Report a problem',
+    'Job Posting',
+    'Membership Inquiry',
+    'Other',
+  ];
 
   ngOnInit() {
     this.form = this.fb.group({
