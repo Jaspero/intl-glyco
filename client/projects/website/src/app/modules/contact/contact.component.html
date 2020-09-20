@@ -15,15 +15,7 @@
   <label for="subject" class="layout-block">
     <span>What is your message subject?</span>
     <select id="subject" name="subject" formControlName="subject">
-      <option value="" disabled>Select subject</option>
-      <option value="General Inquiry">General Inquiry</option>
-      <option value="Sending a message">Sending a message</option>
-      <option value="Events">Events</option>
-      <option value="Announcement">Announcement</option>
-      <option value="Report a problem">Report a problem</option>
-      <option value="Job Posting">Job Posting</option>
-      <option value="Membership Inquiry">Membership Inquiry</option>
-      <option value="Other">Other</option>
+      <option *ngFor="let option of options" [value]=option>{{option}}</option>
     </select>
   </label>
 

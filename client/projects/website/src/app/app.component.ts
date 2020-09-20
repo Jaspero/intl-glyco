@@ -18,7 +18,7 @@ export function monthRange(start: Date) {
 })
 export class AppComponent implements OnInit {
 constructor(
-  private _http: HttpClient,
+  private http: HttpClient,
   private _router: Router
 ) {}
 
@@ -61,43 +61,6 @@ ngOnInit() {
   //   });
 }
 
-loadData(date = new Date()) {
-
-  const range = monthRange(date);
-
-  this._http.post(
-    'event',
-    {
-      query: {
-        from: {
-          $gte: range.start,
-          $lte: range.end
-        }
-      }
-    }
-  )
-    .subscribe(res => {
-      this.events$.next(res['data'].map(result => {
-        return {
-          start: new Date(result.from),
-
-          /**
-           * The title is here because it's the only
-           * way to get toolTips to display in the calendar
-           */
-          title: result.title,
-          color: {
-            primary: '#aecae8',
-            secondary: '#61BFE5'
-          },
-          result
-        };
-      }));
-
-      this.eventsShort$.next(res['data'].slice(0, 3));
-      this.eventsShortLength$.next(res['data'].length);
-    });
-}
 
 toggleMobileMenu() {
   this.mobileMenu = !this.mobileMenu;
