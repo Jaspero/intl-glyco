@@ -42,6 +42,36 @@ const COLLECTIONS = [
               value: '/dashboard'
             },
             {
+              icon: 'web',
+              label: 'Pages',
+              type: 'link',
+              value: '/m/pages/single'
+            },
+            {
+              icon: 'announcement',
+              label: 'Announcements',
+              type: 'link',
+              value: '/m/announcements/overview'
+            },
+            {
+              icon: 'contacts',
+              label: 'Contact Us',
+              type: 'link',
+              value: '/m/contact-us/overview'
+            },
+            {
+              icon: 'event',
+              label: 'Events',
+              type: 'link',
+              value: '/m/events/overview'
+            },
+            {
+              icon: 'supervised_user_circle',
+              label: 'Sponsor Requests',
+              type: 'link',
+              value: '/m/sponsor-requests/overview'
+            },
+            {
               children: [
                 {
                   icon: 'supervised_user_circle',
