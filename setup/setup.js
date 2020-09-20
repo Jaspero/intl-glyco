@@ -160,8 +160,43 @@ const COLLECTIONS = [
     name: 'pages',
     documents: [
       {
-        id: 'page',
-        title: 'test title',
+        id: 'officers',
+        title: 'test',
+        content: 'content test',
+      },
+      {
+        id: 'national-representatives\n',
+        title: 'test',
+        content: 'content test',
+      },
+      {
+        id: 'procedure',
+        title: 'test',
+        content: 'content test',
+      },
+      {
+        id: 'past-awards',
+        title: 'test',
+        content: 'content test',
+      },
+      {
+        id: 'meetings',
+        title: 'test',
+        content: 'content test',
+      },
+      {
+        id: 'beginners-guide',
+        title: 'test',
+        content: 'content test',
+      },
+      {
+        id: 'glyco-books',
+        title: 'test',
+        content: 'content test',
+      },
+      {
+        id: 'glyco-journals',
+        title: 'test',
         content: 'content test',
       },
     ]
@@ -923,6 +958,89 @@ const MODULES = [
             }
           }
         }
+      }
+    }
+  },
+  {
+    id: 'pages',
+    name: 'pages',
+    description: 'pages',
+    authorization: {
+      read: ['admin'],
+      write: ['admin']
+    },
+    layout: {
+      order: 0,
+      editTitleKey: 'name',
+      icon: 'supervised_user_circle',
+      filterModule: {},
+      sort: {
+        active: 'id',
+        direction: 'desc'
+      },
+      instance: {
+        segments: [{
+          fields: [
+            '/id',
+            '/title',
+            '/content',
+          ]
+        }]
+      },
+      table: {
+        hideImport: true,
+        tableColumns: [
+          {
+            key: '/id',
+            label: 'Id',
+            sortable: true
+          },
+          {
+            key: '/title',
+            label: 'Title'
+          },
+        ],
+        actions: [
+          {
+            value: `it => '<jms-e-cp data-id="' + it.id + '"></jms-e-cp>'`
+          },
+          {
+            value: `it => '<jms-e-tus data-id="' + it.id + '"></jms-e-tus>'`
+          }
+        ]
+      },
+    },
+    schema: {
+      properties: {
+        id: {
+          type: 'string'
+        },
+        content: {
+          type: 'string',
+        },
+      },
+      definitions: {
+        id: {
+          type: 'ID'
+        },
+        title: {
+          label: 'title',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+        content: {
+          label: 'content',
+          component: {
+            type: 'textarea',
+            configuration: {
+              type: 'textarea'
+            }
+          }
+        },
       }
     }
   },
