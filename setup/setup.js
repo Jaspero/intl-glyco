@@ -124,9 +124,12 @@ const COLLECTIONS = [
     documents: [
       {
         id: 'test',
-        name: 'test@test.com',
-        message: 'This is message example',
-        createdOn: Date.now()
+        title: 'test@test.com',
+        description: 'This is message example',
+        content: 'This is message example',
+        createdOn: Date.now(),
+        to: Date.now(),
+        from: Date.now(),
       },
     ]
   },
@@ -754,6 +757,420 @@ const MODULES = [
             }
           }
         },
+      }
+    }
+  },
+  {
+    id: 'events',
+    name: 'events',
+    description: 'events',
+    authorization: {
+      read: ['admin'],
+      write: ['admin']
+    },
+    layout: {
+      order: 0,
+      editTitleKey: 'name',
+      icon: 'supervised_user_circle',
+      filterModule: {
+        persist: true,
+        schema: {
+          properties: {
+            role: {
+              type: 'string'
+            }
+          }
+        },
+        definitions: {
+          title: {
+            label: 'Title',
+            component: {
+              type: 'input',
+              configuration: {
+                populate: {
+                  collection: 'input'
+                }
+              }
+            }
+          },
+          data: {
+            label: 'data',
+            component: {
+              type: 'text-area',
+              configuration: {
+                populate: {
+                  collection: 'text-area'
+                }
+              }
+            }
+          },
+        },
+        segments: [{
+          type: 'empty',
+          fields: [
+            '/id',
+            '/title',
+            '/data'
+          ]
+        }]
+      },
+      sort: {
+        active: 'id',
+        direction: 'desc'
+      },
+      instance: {
+        segments: [{
+          fields: [
+            '/id',
+            '/title',
+            '/data',
+          ]
+        }]
+      },
+      table: {
+        hideImport: true,
+        tableColumns: [
+          {
+            key: '/id',
+            label: 'Id',
+            sortable: true
+          },
+          {
+            key: '/title',
+            label: 'Name'
+          },
+        ],
+        actions: [
+          {
+            value: `it => '<jms-e-cp data-id="' + it.id + '"></jms-e-cp>'`
+          },
+          {
+            value: `it => '<jms-e-tus data-id="' + it.id + '"></jms-e-tus>'`
+          }
+        ]
+      },
+      overview: {
+        toolbar: ['<jms-e-user-add></jms-e-user-add>']
+      }
+    },
+    schema: {
+      properties: {
+        id: {
+          type: 'string'
+        },
+        title: {
+          type: 'string',
+        },
+        createdOn: {
+          type: 'number'
+        },
+        from: {
+          type: 'number'
+        },
+        to: {
+          type: 'number'
+        },
+        description: {
+          type: 'string'
+        },
+        content: {
+          type: 'string'
+        }
+      },
+      definitions: {
+        id: {
+          type: 'ID'
+        },
+        title: {
+          label: 'title',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+        description: {
+          label: 'description',
+          component: {
+            type: 'textarea',
+            configuration: {
+              type: 'textarea'
+            }
+          }
+        },
+        content: {
+          label: 'content',
+          component: {
+            type: 'textarea',
+            configuration: {
+              type: 'textarea'
+            }
+          }
+        },
+        createdOn: {
+          label: 'Created On',
+          formatOnLoad: '(value) => value || Date.now()',
+          component: {
+            type: 'date',
+            configuration: {
+              format: 'number'
+            }
+          }
+        },
+        to: {
+          label: 'to',
+          component: {
+            type: 'date',
+            configuration: {
+              type: 'number'
+            }
+          }
+        },
+        from: {
+          label: 'from',
+          component: {
+            type: 'date',
+            configuration: {
+              type: 'number'
+            }
+          }
+        },
+      }
+    }
+  },
+  {
+    id: 'sponsor-requests',
+    name: 'sponsor-requests',
+    description: 'sponsor-requests',
+    authorization: {
+      read: ['admin'],
+      write: ['admin']
+    },
+    layout: {
+      order: 0,
+      editTitleKey: 'name',
+      icon: 'supervised_user_circle',
+      filterModule: {
+        persist: true,
+        schema: {
+          properties: {
+            email: {
+              type: 'string'
+            },
+            name: {
+              type: 'string'
+            },
+            phone: {
+              type: 'number'
+            },
+            address: {
+              type: 'string'
+            },
+            city: {
+              type: 'string'
+            },
+            postalCode: {
+              type: 'string'
+            },
+            country: {
+              type: 'string'
+            },
+            institution: {
+              type: 'string'
+            },
+            department: {
+              type: 'string'
+            },
+          }
+        },
+        definitions: {
+          email: {
+            label: 'Email',
+            component: {
+              type: 'input',
+              configuration: {
+                populate: {
+                  collection: 'input'
+                }
+              }
+            }
+          },
+          name: {
+            label: 'Name',
+            component: {
+              type: 'input',
+              configuration: {
+                populate: {
+                  collection: 'input'
+                }
+              }
+            }
+          },
+        },
+        segments: [{
+          type: 'empty',
+          fields: [
+            '/id',
+            '/title',
+            '/data'
+          ]
+        }]
+      },
+      sort: {
+        active: 'id',
+        direction: 'desc'
+      },
+      instance: {
+        segments: [{
+          fields: [
+            '/id',
+            '/title',
+            '/data',
+          ]
+        }]
+      },
+      table: {
+        hideImport: true,
+        tableColumns: [
+          {
+            key: '/id',
+            label: 'Id',
+            sortable: true
+          },
+          {
+            key: '/title',
+            label: 'Name'
+          },
+        ],
+        actions: [
+          {
+            value: `it => '<jms-e-cp data-id="' + it.id + '"></jms-e-cp>'`
+          },
+          {
+            value: `it => '<jms-e-tus data-id="' + it.id + '"></jms-e-tus>'`
+          }
+        ]
+      },
+      overview: {
+        toolbar: ['<jms-e-user-add></jms-e-user-add>']
+      }
+    },
+    schema: {
+      properties: {
+        email: {
+          type: 'string'
+        },
+        name: {
+          type: 'string',
+        },
+        phone: {
+          type: 'string'
+        },
+        address: {
+          type: 'string'
+        },
+        city: {
+          type: 'string'
+        },
+        postalCode: {
+          type: 'string'
+        },
+        country: {
+          type: 'string'
+        },
+        institution: {
+          type: 'string'
+        },
+        department: {
+          type: 'string'
+        }
+      },
+      definitions: {
+        id: {
+          type: 'ID'
+        },
+        email: {
+          label: 'email',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+        name: {
+          label: 'name',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+        phone: {
+          label: 'email',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+        address: {
+          label: 'address',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+        city: {
+          label: 'city',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+        postalCode: {
+          label: 'postalCode',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+        country: {
+          label: 'country',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+        institution: {
+          label: 'institution',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        },
+        department: {
+          label: 'department',
+          component: {
+            type: 'input',
+            configuration: {
+              type: 'string'
+            }
+          }
+        }
       }
     }
   },
