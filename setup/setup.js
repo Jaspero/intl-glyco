@@ -45,7 +45,7 @@ const COLLECTIONS = [
               icon: 'web',
               label: 'Pages',
               type: 'link',
-              value: '/m/pages/single'
+              value: '/m/pages/overview'
             },
             {
               icon: 'announcement',
@@ -129,106 +129,6 @@ const COLLECTIONS = [
         description: 'A user with limited application access',
         createdOn: Date.now()
       }
-    ]
-  },
-  {
-    name: 'sponsor-requests',
-    documents: [
-      {
-        id: 'test',
-        createdOn: Date.now(),
-        email: 'test@test.com',
-        name: 'test',
-        phone: 123,
-        address: 'sjemba',
-        city: 'os',
-        postalCode: 31000,
-        country: 'cr',
-        institution: 'test',
-        department: 'leader'
-      },
-    ]
-  },
-  {
-    name: 'events',
-    documents: [
-      {
-        id: 'test',
-        title: 'test@test.com',
-        description: 'This is message example',
-        content: 'This is message example',
-        createdOn: Date.now(),
-        to: Date.now(),
-        from: Date.now(),
-      },
-    ]
-  },
-  {
-    name: 'announcements',
-    documents: [
-      {
-        id: 'test',
-        title: 'This is test announcements',
-        content: 'This is message example',
-      },
-    ]
-  },
-  {
-    name: 'contact-us',
-    documents: [
-      {
-        id: 'test',
-        name: 'This is test contact-us',
-        email: 'test@test.com',
-        subject: 'test',
-        message: 'test test test',
-        createdOn: Date.now()
-      },
-    ]
-  },
-  {
-    name: 'pages',
-    documents: [
-      {
-        id: 'officers',
-        title: 'test',
-        content: 'content test',
-      },
-      {
-        id: 'national-representatives\n',
-        title: 'test',
-        content: 'content test',
-      },
-      {
-        id: 'procedure',
-        title: 'test',
-        content: 'content test',
-      },
-      {
-        id: 'past-awards',
-        title: 'test',
-        content: 'content test',
-      },
-      {
-        id: 'meetings',
-        title: 'test',
-        content: 'content test',
-      },
-      {
-        id: 'beginners-guide',
-        title: 'test',
-        content: 'content test',
-      },
-      {
-        id: 'glyco-books',
-        title: 'test',
-        content: 'content test',
-      },
-      {
-        id: 'glyco-journals',
-        title: 'test',
-        content: 'content test',
-      },
     ]
   },
 ];
@@ -497,15 +397,6 @@ const MODULES = [
           }
         ],
         actions: [
-          {
-            value: `it => '<jms-e-tpr data-email="' + it.data.email + '"></jms-e-tpr>'`
-          },
-          {
-            value: `it => '<jms-e-cp data-id="' + it.id + '"></jms-e-cp>'`
-          },
-          {
-            value: `it => '<jms-e-tus data-id="' + it.id + '"></jms-e-tus>'`
-          }
         ]
       },
     },
@@ -597,15 +488,14 @@ const MODULES = [
       icon: 'supervised_user_circle',
       filterModule: {},
       sort: {
-        active: 'id',
+        active: 'title',
         direction: 'desc'
       },
       instance: {
         segments: [{
           fields: [
-            '/id',
             '/title',
-            '/data',
+            '/content',
           ]
         }]
       },
@@ -613,22 +503,11 @@ const MODULES = [
         hideImport: true,
         tableColumns: [
           {
-            key: '/id',
-            label: 'Id',
-            sortable: true
-          },
-          {
             key: '/title',
-            label: 'Name'
+            label: 'Title'
           },
         ],
         actions: [
-          {
-            value: `it => '<jms-e-cp data-id="' + it.id + '"></jms-e-cp>'`
-          },
-          {
-            value: `it => '<jms-e-tus data-id="' + it.id + '"></jms-e-tus>'`
-          }
         ]
       },
     },
@@ -637,12 +516,12 @@ const MODULES = [
         id: {
           type: 'string'
         },
+        content: {
+          type: 'string',
+        },
         title: {
           type: 'string',
         },
-        data: {
-          type: 'string'
-        }
       },
       definitions: {
         id: {
@@ -657,12 +536,12 @@ const MODULES = [
             }
           }
         },
-        data: {
-          label: 'Data',
+        content: {
+          label: 'content',
           component: {
             type: 'textarea',
             configuration: {
-              type: 'string'
+              type: 'textarea'
             }
           }
         },
@@ -683,13 +562,12 @@ const MODULES = [
       icon: 'supervised_user_circle',
       filterModule: {},
       sort: {
-        active: 'id',
+        active: 'createdOn',
         direction: 'desc'
       },
       instance: {
         segments: [{
           fields: [
-            '/id',
             '/title',
             '/createdOn',
             '/from',
@@ -703,11 +581,6 @@ const MODULES = [
         hideImport: true,
         tableColumns: [
           {
-            key: '/id',
-            label: 'Id',
-            sortable: true
-          },
-          {
             key: '/title',
             label: 'Title'
           },
@@ -717,12 +590,6 @@ const MODULES = [
           },
         ],
         actions: [
-          {
-            value: `it => '<jms-e-cp data-id="' + it.id + '"></jms-e-cp>'`
-          },
-          {
-            value: `it => '<jms-e-tus data-id="' + it.id + '"></jms-e-tus>'`
-          }
         ]
       },
     },
@@ -826,13 +693,12 @@ const MODULES = [
       icon: 'supervised_user_circle',
       filterModule: {},
       sort: {
-        active: 'id',
+        active: 'name',
         direction: 'desc'
       },
       instance: {
         segments: [{
           fields: [
-            '/id',
             '/data',
             '/email',
             '/name',
@@ -864,12 +730,6 @@ const MODULES = [
           },
         ],
         actions: [
-          {
-            value: `it => '<jms-e-cp data-id="' + it.id + '"></jms-e-cp>'`
-          },
-          {
-            value: `it => '<jms-e-tus data-id="' + it.id + '"></jms-e-tus>'`
-          }
         ]
       },
     },
@@ -1005,13 +865,12 @@ const MODULES = [
       icon: 'supervised_user_circle',
       filterModule: {},
       sort: {
-        active: 'id',
+        active: 'title',
         direction: 'desc'
       },
       instance: {
         segments: [{
           fields: [
-            '/id',
             '/title',
             '/content',
           ]
@@ -1021,22 +880,11 @@ const MODULES = [
         hideImport: true,
         tableColumns: [
           {
-            key: '/id',
-            label: 'Id',
-            sortable: true
-          },
-          {
             key: '/title',
             label: 'Title'
           },
         ],
         actions: [
-          {
-            value: `it => '<jms-e-cp data-id="' + it.id + '"></jms-e-cp>'`
-          },
-          {
-            value: `it => '<jms-e-tus data-id="' + it.id + '"></jms-e-tus>'`
-          }
         ]
       },
     },

@@ -44,6 +44,7 @@ import {InstanceSingleComponent} from './pages/instance-single/instance-single.c
 import {ColumnPipe} from './pipes/column/column.pipe';
 import {ParseTemplatePipe} from './pipes/parse-template/parse-template.pipe';
 import {InstanceOverviewContextService} from './services/instance-overview-context.service';
+import {FormBuilderContextService} from '@jaspero/form-builder';
 
 const routes: Routes = [
   {
@@ -96,7 +97,8 @@ const routes: Routes = [
   ],
   providers: [
     InstanceOverviewContextService,
-    CustomModuleGuard
+    CustomModuleGuard,
+    FormBuilderContextService
   ],
   imports: [
     CommonModule,
