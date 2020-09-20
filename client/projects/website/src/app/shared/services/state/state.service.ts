@@ -5,7 +5,17 @@ import {BehaviorSubject} from 'rxjs';
 export class StateService {
   constructor() { }
 
-  pages = ['glyco-journals', 'glyco-books', 'beginners-guide'];
+  pages = [
+    'officers',
+    'national-representatives',
+    'procedure',
+    'past-awards',
+    'meetings',
+    'beginners-guide',
+    'glyco-books',
+    'glyco-journals'
+  ];
+
   currentPage$ = new BehaviorSubject(null);
   event$ = new BehaviorSubject(null);
 }
