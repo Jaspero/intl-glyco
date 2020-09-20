@@ -1,0 +1,2 @@
+<jaspero-event-item *ngFor="let item of results" [event]="item"></jaspero-event-item>
+<jaspero-pagination [total]="total" (pageChange)="onPageChange($event)"></jaspero-pagination>

@@ -1,0 +1,5 @@
+<div class="pagination" *ngIf="showPagination$ | async">
+  <span (click)="moveLeft()"><svg width="14" height="14"><use xlink:href="#left" /></svg></span>
+  <span *ngFor="let p of pages$ | async" (click)="changeCurrent(p)" [class.active]="p === current" [class.dots]="p === split">{{p}}</span>
+  <span (click)="moveRight()"><svg width="14" height="14"><use xlink:href="#right" /></svg></span>
+</div>

@@ -1,0 +1,42 @@
+/*==================================================
+
+  Functions
+
+==================================================*/
+
+
+/*
+ * Fluid
+ */
+
+$min-vw: 800px;
+$max-vw: 1500px;
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid($max, $min, $prop) {
+  & {
+    #{$prop}: $min;
+    @media screen and (min-width: $min-vw) {
+      #{$prop}: calc(#{$min} + #{strip-unit($max - $min)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+    }
+    @media screen and (min-width: $max-vw) {
+      #{$prop}: $max;
+    }
+  }
+}
+
+
+/*
+ * Lighten and darken
+ */
+
+@function darken($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+@function lighten($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}

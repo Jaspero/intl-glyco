@@ -1,0 +1,264 @@
+/*==================================================
+
+  Layout
+
+==================================================*/
+
+
+/*
+ * Container
+ */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/*
+ * Body
+ */
+
+body {
+  background: url("/assets/imgs/background.svg") center top / cover no-repeat;
+}
+
+
+/*
+ * Header
+ */
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  .header_main {
+    background: #333333;
+    button svg, a svg { transition: .2s; }
+    button:hover svg, a:hover svg { fill: white; }
+    button.active svg, a.active svg { fill: white; }
+  }
+  .header_sub {
+    background: $blue;
+    border-bottom: 6px solid $blue-light;
+    nav {
+      .item {
+        flex: 1 1 auto;
+        cursor: pointer;
+        position: relative;
+
+        color: #7dc6e8;
+        text-align: center;
+        background: linear-gradient(135deg, #3283c9 0%,#3178c4 100%);
+        white-space: nowrap;
+        &:hover {
+          color: white;
+          .sub-menu { display: block; }
+        }
+        & > span {
+          display: inline-block;
+          padding: 1.5rem 0;
+          width: 100%;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          height: 6px;
+          background: transparent;
+        }
+        &.active:after {
+          background: white;
+        }
+        .sub-menu {
+          display: none;
+          min-width: 200px;
+          position: absolute;
+          padding: 0;
+          top: calc(100% + 6px);
+          left: 0;
+          background: $blue-lighter;
+          a {
+            display: block;
+            text-align: left;
+            padding: 2rem;
+            border-top: 2px solid $blue;
+            color: white;
+            &:nth-child(1) { border-top: none; }
+            &:hover, &.active { background: $blue; }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*
+ * Image block
+ */
+
+.image-block {
+  position: relative;
+  margin-top: 110px;
+  height: 270px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  background: url("/assets/imgs/igo-logo.png") left center / contain no-repeat;
+  @media (max-width: $screen-s) { background: url("/assets/imgs/igo-logo.png") left center / contain no-repeat, url("/assets/imgs/slide/5.jpg") right center / cover no-repeat; }
+  [class*="slide"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    @media (max-width: $screen-s) { display: none; }
+    &[class*="slide-1"] {
+      background: url("/assets/imgs/slide/1.jpg") right center / cover no-repeat;
+      animation: slide-1 20s infinite;
+      @keyframes slide-1 {
+        0%   { opacity: 1; }
+        15%  { opacity: 1; }
+        20%  { opacity: 0; }
+        95%  { opacity: 0; }
+        100%  { opacity: 1; }
+      }
+    }
+    &[class*="slide-2"] {
+      background: url("/assets/imgs/slide/2.jpg") right center / cover no-repeat;
+      opacity: 0;
+      animation: slide-2 20s infinite;
+      @keyframes slide-2 {
+        15%   { opacity: 0; }
+        20%  { opacity: 1; }
+        35%  { opacity: 1; }
+        40%  { opacity: 0; }
+      }
+    }
+    &[class*="slide-3"] {
+      background: url("/assets/imgs/slide/3.jpg") right center / cover no-repeat;
+      opacity: 0;
+      animation: slide-3 20s infinite;
+      @keyframes slide-3 {
+        35%   { opacity: 0; }
+        40%  { opacity: 1; }
+        55%  { opacity: 1; }
+        60%  { opacity: 0; }
+      }
+    }
+    &[class*="slide-4"] {
+      background: url("/assets/imgs/slide/4.jpg") right center / cover no-repeat;
+      opacity: 0;
+      animation: slide-4 20s infinite;
+      @keyframes slide-4 {
+        55%   { opacity: 0; }
+        60%  { opacity: 1; }
+        75%  { opacity: 1; }
+        80%  { opacity: 0; }
+      }
+    }
+    &[class*="slide-5"] {
+      background: url("/assets/imgs/slide/5.jpg") right center / cover no-repeat;
+      opacity: 0;
+      animation: slide-5 20s infinite;
+      @keyframes slide-5 {
+        75%   { opacity: 0; }
+        80%  { opacity: 1; }
+        95%  { opacity: 1; }
+        100%  { opacity: 0; }
+      }
+    }
+  }
+}
+
+
+/*
+ * Main
+ */
+
+main {
+  display: flex;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  background: white;
+  &.container { margin-top: 20px; }
+  .content {
+    flex: 1;
+    padding: 2rem;
+    a, p a {
+      font-weight: bold;
+      color: $blue;
+      &:hover { color: $blue-light; }
+    }
+  }
+  .sidebar {
+    flex-basis: 300px;
+    padding: 2rem;
+    border-left: 1px solid #eee;
+  }
+  @media (max-width: $screen-s) {
+    flex-direction: column;
+    .sidebar {
+      border-left: none;
+      border-top: 1px solid #eee;
+    }
+  }
+}
+
+
+/*
+ * Footer
+ */
+
+footer {
+  padding-bottom: 80px;
+  p { padding: 0 1rem; }
+}
+
+
+/*
+ * Aside
+ */
+
+aside {
+  position: fixed;
+  z-index: -1;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.4);
+  transition: .2s;
+  &.active {
+    z-index: 10;
+    opacity: 1;
+  }
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 6rem 2rem 2rem;
+    background: $blue-light;
+    button {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+    }
+    a {
+      padding: 1rem;
+      color: rgba(255,255,255,.7);
+      width: 100%;
+      text-align: left;
+      &:hover, &:active { color: rgba(255,255,255,1); }
+    }
+  }
+}

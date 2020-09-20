@@ -1,0 +1,33 @@
+@import "../style/essentials";
+
+.sidebar_navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.more_events {
+  border-top: 3px dotted #CED4DE;
+  font-size: 16px;
+  padding: 1rem;
+  color: #d4d6d9;
+  text-align: center;
+  cursor: pointer;
+  transition: .2s;
+  &:hover { color: black; }
+}
+
+.logo {
+  img {
+    height: auto;
+    width: 100%;
+
+    @media (max-width: $screen-m) {
+      padding-left: 1rem;
+    }
+
+    @media (max-width: $screen-xs) {
+      max-width: 230px;
+    }
+  }
+}
