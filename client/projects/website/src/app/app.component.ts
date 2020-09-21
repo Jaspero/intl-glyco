@@ -1,8 +1,12 @@
 import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/firestore';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {MENU} from './shared/consts/menu.const';
+import {FirebaseOperator} from './shared/enums/firebase-operator.enum';
+import {FirestoreCollection} from './shared/enums/firestore-collection.enum';
 
 export function monthRange(start: Date) {
   return {
@@ -18,8 +22,8 @@ export function monthRange(start: Date) {
 })
 export class AppComponent implements OnInit {
 constructor(
-  private http: HttpClient,
-  private _router: Router
+  private router: Router,
+  private afs: AngularFirestore
 ) {}
 
 menu = MENU;
@@ -42,23 +46,7 @@ current = {
 };
 
 ngOnInit() {
-  // this.loadData();
-  //
-  // this._router.events
-  //   .subscribe(event => {
-  //     if (event instanceof NavigationStart) {
-  //       this.current = {
-  //         position:  window.pageYOffset || window.document.documentElement.scrollTop,
-  //         link: window.location.pathname
-  //       };
-  //     } else if (event instanceof NavigationEnd) {
-  //       window.scroll(0, event.url === this.last.link ? this.last.position : 0);
-  //       this.last = {
-  //         position: this.current.position,
-  //         link: this.current.link
-  //       };
-  //     }
-  //   });
+  this.loadData();
 }
 
 
@@ -67,6 +55,49 @@ toggleMobileMenu() {
 }
 
 eventClicked(event) {
-  this._router.navigate([`events/${event.result._id}`]);
+  this.router.navigate([`events/${event.result._id}`]);
 }
+
+  loadData(date = new Date()) {
+
+    const range = monthRange(date);
+    this.afs
+      .collection(FirestoreCollection.Events, ref =>
+        ref
+          .where(
+            'from',
+            FirebaseOperator.LargerThenOrEqual,
+            range.start
+          )
+          .where(
+            'from',
+            FirebaseOperator.SmallerThenOrEqual,
+            range.end
+          )
+          .limit(1)
+      )
+      .snapshotChanges()
+      .pipe(
+        map(events =>
+          events.map(event => {
+            const data = event.payload.doc.data();
+            return {
+              id: event.payload.doc.id,
+              start: new Date(data.from * 1000),
+              title: data.title,
+              color: {
+                primary: '#aecae8',
+                secondary: '#61BFE5'
+              },
+              result: data
+            }
+          })
+        )
+      ).subscribe(val => {
+      this.events$.next(val);
+      this.eventsShort$.next(val.slice(0, 3));
+      this.eventsShortLength$.next(val.length);
+    });
+  }
+
 }
