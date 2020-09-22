@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build:cms": "ng build --project=cms --prod",
+    "build:website": "ng build --project=website --prod",
     "start:website": "ng serve --project=website",
     "start:cms": "ng serve --project=cms --port 4000",
     "test": "ng test",
