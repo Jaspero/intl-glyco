@@ -13,17 +13,13 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install Dependencies
-        run: |
-          npm --prefix client ci
+        run: npm --prefix client ci
       - name: Build
-        run: |
-          npm --prefix client run build:website
-        env:
-          PUBLIC_CONFIG: ${{ secrets.PUBLIC_CONFIG }}
+        run: npm --prefix client run build:website
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting:website
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_ID: 'intl-glyco-cb2de''
+          PROJECT_ID: 'intl-glyco-cb2de'
