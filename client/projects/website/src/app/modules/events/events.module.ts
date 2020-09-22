@@ -4,6 +4,7 @@ import {SharedModule} from '../../shared/shared.module';
 import {EventComponent} from './components/event/event.component';
 import {EventsComponent} from './events.component';
 import {EventGuard} from './guards/event.guard';
+import { SingleViewComponent } from './components/single-view/single-view.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {EventGuard} from './guards/event.guard';
   providers: [EventGuard],
   declarations: [
     EventsComponent,
-    EventComponent
+    EventComponent,
+    SingleViewComponent
   ]
 })
 export class EventsModule { }
