@@ -1,12 +1,12 @@
 {
   "targets": {
-    "intl-glyco-cb2de": {
+    "intl-glyco": {
       "hosting": {
         "website": [
-          "intl-glyco-cb2de"
+          "intl-glyco"
         ],
         "cms": [
-          "intl-glyco-cb2de-cms"
+          "intl-glyco-cms"
         ]
       }
     }

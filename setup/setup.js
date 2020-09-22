@@ -484,7 +484,7 @@ const MODULES = [
     },
     layout: {
       order: 0,
-      editTitleKey: 'name',
+      editTitleKey: 'title',
       icon: 'supervised_user_circle',
       filterModule: {},
       sort: {
@@ -506,8 +506,6 @@ const MODULES = [
             key: '/title',
             label: 'Title'
           },
-        ],
-        actions: [
         ]
       },
     },
@@ -523,29 +521,20 @@ const MODULES = [
           type: 'string',
         },
       },
-      definitions: {
-        id: {
-          type: 'ID'
-        },
-        title: {
-          label: 'Title',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
-          }
-        },
-        content: {
-          label: 'Content',
-          component: {
-            type: 'textarea',
-            configuration: {
-              type: 'textarea'
-            }
-          }
-        },
-      }
+    },
+    definitions: {
+      id: {
+        type: 'ID'
+      },
+      title: {
+        label: 'Title'
+      },
+      content: {
+        label: 'Content',
+        component: {
+          type: 'tinymce'
+        }
+      },
     }
   },
   {
@@ -558,9 +547,8 @@ const MODULES = [
     },
     layout: {
       order: 0,
-      editTitleKey: 'name',
+      editTitleKey: 'title',
       icon: 'supervised_user_circle',
-      filterModule: {},
       sort: {
         active: 'createdOn',
         direction: 'desc'
@@ -574,6 +562,7 @@ const MODULES = [
             '/to',
             '/description',
             '/content',
+            '/readMore',
           ]
         }]
       },
@@ -588,8 +577,6 @@ const MODULES = [
             key: '/createdOn',
             label: 'Created On'
           },
-        ],
-        actions: [
         ]
       },
     },
@@ -615,68 +602,74 @@ const MODULES = [
         },
         content: {
           type: 'string'
+        },
+        readMore: {
+          type: 'string'
         }
       },
-      definitions: {
-        id: {
-          type: 'ID'
-        },
-        title: {
-          label: 'Title',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
+    },
+    definitions: {
+      id: {
+        type: 'ID'
+      },
+      title: {
+        label: 'Title',
+        component: {
+          type: 'input',
+          configuration: {
+            type: 'string'
           }
-        },
-        description: {
-          label: 'Description',
-          component: {
-            type: 'textarea',
-            configuration: {
-              type: 'textarea'
-            }
+        }
+      },
+      description: {
+        label: 'description',
+        component: {
+          type: 'tinymce'
+        }
+      },
+      content: {
+        label: 'Content',
+        component: {
+          type: 'tinymce'
+        }
+      },
+      createdOn: {
+        label: 'Created On',
+        formatOnLoad: '(value) => value || Date.now()',
+        component: {
+          type: 'date',
+          configuration: {
+            format: 'number'
           }
-        },
-        content: {
-          label: 'Content',
-          component: {
-            type: 'textarea',
-            configuration: {
-              type: 'textarea'
-            }
+        }
+      },
+      to: {
+        label: 'To',
+        component: {
+          type: 'date',
+          configuration: {
+            type: 'number'
           }
-        },
-        createdOn: {
-          label: 'Created On',
-          formatOnLoad: '(value) => value || Date.now()',
-          component: {
-            type: 'date',
-            configuration: {
-              format: 'number'
-            }
+        }
+      },
+      from: {
+        label: 'From',
+        component: {
+          type: 'date',
+          configuration: {
+            type: 'number'
           }
-        },
-        to: {
-          label: 'To',
-          component: {
-            type: 'date',
-            configuration: {
-              type: 'number'
-            }
+        }
+      },
+      readMore: {
+        label: 'Read More',
+        component: {
+          type: 'input',
+          configuration: {
+            type: 'string'
           }
-        },
-        from: {
-          label: 'From',
-          component: {
-            type: 'date',
-            configuration: {
-              type: 'number'
-            }
-          }
-        },
-      }
+        }
+      },
     }
   },
   {
@@ -699,7 +692,6 @@ const MODULES = [
       instance: {
         segments: [{
           fields: [
-            '/data',
             '/email',
             '/name',
             '/phone',
@@ -763,91 +755,37 @@ const MODULES = [
           type: 'string'
         }
       },
-      definitions: {
-        id: {
-          type: 'ID'
-        },
-        email: {
-          label: 'Email',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
-          }
-        },
-        name: {
-          label: 'Name',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
-          }
-        },
-        phone: {
-          label: 'Phone',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
-          }
-        },
-        address: {
-          label: 'Address',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
-          }
-        },
-        city: {
-          label: 'City',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
-          }
-        },
-        postalCode: {
-          label: 'Postal Code',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
-          }
-        },
-        country: {
-          label: 'Country',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
-          }
-        },
-        institution: {
-          label: 'Institution',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
-          }
-        },
-        department: {
-          label: 'Department',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
-          }
-        }
+    },
+    definitions: {
+      id: {
+        type: 'ID'
+      },
+      email: {
+        label: 'Email',
+      },
+      name: {
+        label: 'Name',
+      },
+      phone: {
+        label: 'Phone',
+      },
+      address: {
+        label: 'Address',
+      },
+      city: {
+        label: 'City',
+      },
+      postalCode: {
+        label: 'Postal Code',
+      },
+      country: {
+        label: 'Country',
+      },
+      institution: {
+        label: 'Institution',
+      },
+      department: {
+        label: 'Department',
       }
     }
   },
@@ -861,7 +799,7 @@ const MODULES = [
     },
     layout: {
       order: 0,
-      editTitleKey: 'name',
+      editTitleKey: 'title',
       icon: 'supervised_user_circle',
       filterModule: {},
       sort: {
@@ -872,7 +810,7 @@ const MODULES = [
         segments: [{
           fields: [
             '/title',
-            '/content',
+            '/content'
           ]
         }]
       },
@@ -884,8 +822,6 @@ const MODULES = [
             label: 'Title'
           },
         ],
-        actions: [
-        ]
       },
     },
     schema: {
@@ -899,42 +835,27 @@ const MODULES = [
         title: {
           type: 'string',
         },
-        welcome: {
-          type: 'string',
-        },
       },
-      definitions: {
-        id: {
-          type: 'ID'
-        },
-        title: {
-          label: 'Title',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
+    },
+    definitions: {
+      id: {
+        type: 'ID'
+      },
+      title: {
+        label: 'Title',
+        component: {
+          type: 'input',
+          configuration: {
+            type: 'string'
           }
-        },
-        welcome: {
-          label: 'Welcome',
-          component: {
-            type: 'input',
-            configuration: {
-              type: 'string'
-            }
-          }
-        },
-        content: {
-          label: 'Content',
-          component: {
-            type: 'textarea',
-            configuration: {
-              type: 'textarea'
-            }
-          }
-        },
-      }
+        }
+      },
+      content: {
+        label: 'Content',
+        component: {
+          type: 'tinymce'
+        }
+      },
     }
   },
 ];
@@ -947,7 +868,7 @@ const serviceAccount = require('./serviceAccountKey.json');
  */
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://intl-glyco-cb2de.firebaseio.com"
+  databaseURL: "https://intl-glyco.firebaseio.com"
 });
 
 async function exec() {

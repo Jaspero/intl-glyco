@@ -23,7 +23,7 @@ jobs:
           npm --prefix functions run build
           sudo npm install -g firebase-tools
       - name: Set project
-        run: npm run firebase -- use intl-glyco-cb2de --token $FIREBASE_TOKEN
+        run: npm run firebase -- use intl-glyco --token $FIREBASE_TOKEN
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       - name: Deploy to Firebase

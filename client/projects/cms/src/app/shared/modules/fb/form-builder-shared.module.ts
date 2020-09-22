@@ -5,6 +5,7 @@ import {DbService as FDbService, FormBuilderModule, ROLE, STORAGE_URL, StorageSe
 import {ENV_CONFIG} from '../../../../env-config';
 import {DbService} from '../../services/db/db.service';
 import {StateService} from '../../services/state/state.service';
+import { TinymceModule } from '@jaspero/fb-tinymce';
 
 export function roleFactory(state: StateService) {
   return state.role;
@@ -13,7 +14,8 @@ export function roleFactory(state: StateService) {
 @NgModule({
   imports: [
     CommonModule,
-    FormBuilderModule
+    FormBuilderModule,
+    TinymceModule
   ],
   exports: [
     FormBuilderModule

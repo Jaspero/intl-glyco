@@ -1,12 +1,11 @@
 export const ENV_CONFIG = {
   firebase: {
-    apiKey: 'AIzaSyCPEUOs08VuV0jlc7LnkUh61x5-TdyGiXU',
-    authDomain: 'intl-glyco-cb2de.firebaseapp.com',
-    databaseURL: 'https://intl-glyco-cb2de.firebaseio.com',
-    projectId: 'intl-glyco-cb2de',
-    storageBucket: 'intl-glyco-cb2de.appspot.com',
-    messagingSenderId: '348954630496',
-    appId: '1:348954630496:web:1d03e42398099f183ea605',
-    measurementId: 'G-8BN9S54RZN'
+    apiKey: 'AIzaSyAViIR1RzGdayZc2tN_5L8e5X9ZztI94Xg',
+    authDomain: 'intl-glyco.firebaseapp.com',
+    databaseURL: 'https://intl-glyco.firebaseio.com',
+    projectId: 'intl-glyco',
+    storageBucket: 'intl-glyco.appspot.com',
+    messagingSenderId: '602226033906',
+    appId: '1:602226033906:web:598c0aa150d762977dbc6b'
   }
 };
