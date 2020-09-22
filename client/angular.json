@@ -25,7 +25,8 @@
             "aot": false,
             "assets": [
               "projects/website/src/favicon.ico",
-              "projects/website/src/assets"
+              "projects/website/src/assets",
+              "projects/website/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/website/src/styles.scss"
@@ -60,7 +61,9 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/website/ngsw-config.json"
             }
           }
         },
@@ -90,7 +93,8 @@
             "karmaConfig": "projects/website/karma.conf.js",
             "assets": [
               "projects/website/src/favicon.ico",
-              "projects/website/src/assets"
+              "projects/website/src/assets",
+              "projects/website/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/website/src/styles.scss"
@@ -296,5 +300,8 @@
       }
     }
   },
-  "defaultProject": "website"
+  "defaultProject": "website",
+  "cli": {
+    "analytics": "244060ff-3419-40fc-8a5b-b66614ce43b7"
+  }
 }
