@@ -17,7 +17,6 @@ jobs:
           npm --prefix client ci
       - name: Build
         run: |
-          echo export const ENV_CONFIG=$PUBLIC_CONFIG > client/env-config.ts
           npm --prefix client run build:website
         env:
           PUBLIC_CONFIG: ${{ secrets.PUBLIC_CONFIG }}
