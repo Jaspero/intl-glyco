@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build:cms": "npm --prefix client run build:cms",
+    "build:website": "npm --prefix client run build:website",
     "build:functions": "npm --prefix functions run build",
     "lint:client": "npm --prefix client run lint",
     "lint:functions": "npm --prefix functions run lint",
