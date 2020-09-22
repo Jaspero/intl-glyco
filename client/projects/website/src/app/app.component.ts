@@ -10,8 +10,8 @@ import {FirestoreCollection} from './shared/enums/firestore-collection.enum';
 
 export function monthRange(start: Date) {
   return {
-    start: new Date(start.getFullYear(), start.getMonth(), 1),
-    end: new Date(start.getFullYear(), start.getMonth() + 1, 0)
+    start: new Date(start.getFullYear(), start.getMonth(), 1).getTime(),
+    end: new Date(start.getFullYear(), start.getMonth() + 1, 0).getTime()
   };
 }
 
@@ -80,11 +80,13 @@ eventClicked(event) {
       .pipe(
         map(events =>
           events.map(event => {
-            const data = event.payload.doc.data();
+            const data: any = event.payload.doc.data();
             return {
               id: event.payload.doc.id,
-              start: new Date(data.from * 1000),
+              start: data.from,
+              to: data.to,
               title: data.title,
+              description: data.description,
               color: {
                 primary: '#aecae8',
                 secondary: '#61BFE5'
@@ -95,9 +97,13 @@ eventClicked(event) {
         )
       ).subscribe(val => {
       this.events$.next(val);
-      this.eventsShort$.next(val.slice(0, 3));
+      this.eventsShort$.next(val);
       this.eventsShortLength$.next(val.length);
     });
+  }
+
+  redirectTo(id) {
+    this.router.navigate([`events/${id}`]);
   }
 
 }

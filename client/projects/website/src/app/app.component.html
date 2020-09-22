@@ -100,7 +100,13 @@
 
     <div class="sidebar_events" *ngIf="eventsShortLength$ | async;">
       <h2>Events</h2>
-      <jaspero-event *ngFor="let item of eventsShort$ | async" [event]="item"></jaspero-event>
+
+      <div *ngFor="let event of eventsShort$ | async">
+        <h4 (click)="redirectTo(event.id)">{{event.title}}</h4>
+        <p class="event_date"><span>{{event.start | date}}</span> <ng-container *ngIf="event.to">- <span>{{event.to | date}}</span></ng-container></p>
+        <div [innerHtml]="event.description | sanitize"></div>
+        <button class="btn--regular" type="button" (click)="redirectTo(event.id)">Read More</button>
+      </div>
 
       <div class="more_events" routerLink="events">
         More Events

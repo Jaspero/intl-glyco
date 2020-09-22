@@ -6,7 +6,7 @@ import {map} from 'rxjs/operators';
 import {FirestoreCollection} from '../../shared/enums/firestore-collection.enum';
 
 @Component({
-  selector: 'jaspero-events',
+  selector: 'ig-jaspero-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
