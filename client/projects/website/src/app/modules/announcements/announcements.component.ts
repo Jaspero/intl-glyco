@@ -15,6 +15,7 @@ export class AnnouncementsComponent implements OnInit {
   ) { }
 
   items$: Observable<any>;
+  loading$: Observable<boolean>;
 
   ngOnInit() {
     this.items$ = this.afs
