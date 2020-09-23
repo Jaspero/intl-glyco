@@ -1,7 +1,6 @@
-import {HttpClient} from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {NavigationEnd, NavigationStart, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {MENU} from './shared/consts/menu.const';
