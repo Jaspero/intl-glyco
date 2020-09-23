@@ -26,6 +26,12 @@
       "target": "website",
       "public": "client/dist/website",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
       "headers": [{
         "source": "/@(ngsw-worker.js|ngsw.json)",
         "headers": [{

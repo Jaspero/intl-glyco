@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {from} from 'rxjs';
+import {tap} from 'rxjs/operators';
 import {FirestoreCollection} from '../../shared/enums/firestore-collection.enum';
 
 @Component({
@@ -38,13 +40,20 @@ export class ContactComponent implements OnInit {
 
   submit() {
     return () =>
-      this.afs
-        .collection(FirestoreCollection.Contact)
-        .doc(this.afs.createId())
-        .set({
-          createdOn: Date.now(),
-          ...this.form.getRawValue()
-        })
+      from(
+        this.afs
+          .collection(FirestoreCollection.Contact)
+          .doc(this.afs.createId())
+          .set({
+            createdOn: Date.now(),
+            ...this.form.getRawValue()
+          })
+      )
+        .pipe(
+          tap(() => {
+            alert('Your message has been sent successfully. Thank you.');
+            this.form.reset();
+          })
+        )
   }
-
 }

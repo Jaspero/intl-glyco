@@ -356,7 +356,6 @@ const MODULES = [
       order: 0,
       editTitleKey: 'name',
       icon: 'supervised_user_circle',
-      filterModule: {},
       sort: {
         active: 'createdOn',
         direction: 'desc'
@@ -484,7 +483,6 @@ const MODULES = [
       order: 0,
       editTitleKey: 'title',
       icon: 'supervised_user_circle',
-      filterModule: {},
       sort: {
         active: 'title',
         direction: 'desc'
