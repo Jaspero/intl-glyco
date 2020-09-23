@@ -35,20 +35,9 @@ events$ = new BehaviorSubject([]);
 eventsShort$ = new BehaviorSubject([]);
 eventsShortLength$ = new BehaviorSubject(0);
 
-last = {
-  position: 0,
-  link: ''
-};
-
-current = {
-  position: 0,
-  link: ''
-};
-
 ngOnInit() {
   this.loadData();
 }
-
 
 toggleMobileMenu() {
   this.mobileMenu = !this.mobileMenu;
