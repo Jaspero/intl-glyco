@@ -2,9 +2,8 @@
 ![Deploy CMS](https://github.com/Jaspero/intl-glyco/workflows/Deploy%20CMS/badge.svg)
 ![Deploy Functions](https://github.com/Jaspero/intl-glyco/workflows/Deploy%20Functions/badge.svg)
 ![Deploy Firestore Indexes](https://github.com/Jaspero/intl-glyco/workflows/Deploy%20Firestore%20Indexes/badge.svg)
+![Deploy Rules](https://github.com/Jaspero/intl-glyco/workflows/Deploy%20Rules/badge.svg)
 ![Deploy Storage Rules](https://github.com/Jaspero/intl-glyco/workflows/Deploy%20Storage%20Rules/badge.svg)
-
-# JMS
 
 ## Why is this open source
 
