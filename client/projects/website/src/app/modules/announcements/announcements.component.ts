@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {FirestoreCollection} from '../../shared/enums/firestore-collection.enum';
 
 @Component({
-  selector: 'jaspero-announcements',
+  selector: 'ig-announcements',
   templateUrl: './announcements.component.html',
   styleUrls: ['./announcements.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

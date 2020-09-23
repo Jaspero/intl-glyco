@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import {StateService} from '../../../../shared/services/state/state.service';
 
 @Component({
-  selector: 'ig-jaspero-event',
+  selector: 'ig-event',
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

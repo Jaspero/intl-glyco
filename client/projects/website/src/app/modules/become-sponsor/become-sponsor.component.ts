@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FirestoreCollection} from '../../shared/enums/firestore-collection.enum';
 
 @Component({
-  selector: 'jaspero-become-sponsor',
+  selector: 'ig-become-sponsor',
   templateUrl: './become-sponsor.component.html',
   styleUrls: ['./become-sponsor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

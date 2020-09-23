@@ -6,7 +6,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class SanitizePipe implements PipeTransform {
   constructor(
-    private _sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer
   ) {}
 
   transform(value: string, type = 'html') {
@@ -19,6 +19,6 @@ export class SanitizePipe implements PipeTransform {
       resourceUrl: 'bypassSecurityTrustResourceUrl'
     };
 
-    return this._sanitizer[sanitizeMap[type]](value);
+    return this.sanitizer[sanitizeMap[type]](value);
   }
 }
