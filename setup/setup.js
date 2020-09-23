@@ -350,8 +350,7 @@ const MODULES = [
     name: 'Contact us',
     description: 'Contact us',
     authorization: {
-      read: ['admin'],
-      write: ['admin']
+      read: ['admin']
     },
     layout: {
       order: 0,
@@ -479,7 +478,6 @@ const MODULES = [
     name: 'Announcements',
     description: 'Announcements',
     authorization: {
-      read: ['admin'],
       write: ['admin']
     },
     layout: {
@@ -542,7 +540,6 @@ const MODULES = [
     name: 'Events',
     description: 'Events',
     authorization: {
-      read: ['admin'],
       write: ['admin']
     },
     layout: {
@@ -648,7 +645,7 @@ const MODULES = [
         component: {
           type: 'date',
           configuration: {
-            type: 'number'
+            format: 'number'
           }
         }
       },
@@ -657,7 +654,7 @@ const MODULES = [
         component: {
           type: 'date',
           configuration: {
-            type: 'number'
+            format: 'number'
           }
         }
       },
@@ -677,8 +674,7 @@ const MODULES = [
     name: 'sponsor-requests',
     description: 'sponsor-requests',
     authorization: {
-      read: ['admin'],
-      write: ['admin']
+      read: ['admin']
     },
     layout: {
       order: 0,
@@ -794,7 +790,6 @@ const MODULES = [
     name: 'pages',
     description: 'pages',
     authorization: {
-      read: ['admin'],
       write: ['admin']
     },
     layout: {
@@ -809,6 +804,7 @@ const MODULES = [
       instance: {
         segments: [{
           fields: [
+            '/id',
             '/title',
             '/content'
           ]
