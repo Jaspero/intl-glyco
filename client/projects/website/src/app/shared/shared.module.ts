@@ -17,7 +17,7 @@ const MODULES = [
   AngularFireModule.initializeApp(ENV_CONFIG.firebase),
   AngularFireAuthModule,
 
-  //helpers
+  // helpers
   LoadClickModule,
   StopPropagationModule,
 ];

@@ -43,7 +43,7 @@ toggleMobileMenu() {
 }
 
 eventClicked(event) {
-  this.router.navigate([`events/${event.result._id}`]);
+  this.router.navigate([`events/${event.id}`]);
 }
 
   loadData(date = new Date()) {
