@@ -4,7 +4,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {RouterModule} from '@angular/router';
-import {LoadClickModule, StopPropagationModule} from '@jaspero/ng-helpers';
+import {LoadClickModule, SanitizeModule, StopPropagationModule} from '@jaspero/ng-helpers';
 import {ENV_CONFIG} from '../../env-config';
 import {SanitizePipe} from './pipes/sanitize.pipe';
 
@@ -20,6 +20,7 @@ const MODULES = [
   // helpers
   LoadClickModule,
   StopPropagationModule,
+  SanitizeModule,
 ];
 
 const COMPONENTS = [

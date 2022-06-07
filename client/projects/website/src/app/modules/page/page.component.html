@@ -1,5 +1,5 @@
 
 <ng-container *ngIf="state.currentPage$ | async as html">
   <h1>{{html.title}}</h1>
-  <div [innerHtml]="html.content"></div>
+  <div [innerHtml]="html.content | jpSanitize"></div>
 </ng-container>
