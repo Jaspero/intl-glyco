@@ -37,15 +37,15 @@ eventsShortLength$ = new BehaviorSubject(0);
 ngOnInit() {
 
   try {
-    navigator.serviceWorker.getRegistration().then(function(reg) {
-      if (reg) {
-        // @ts-ignore
-        reg.unregister().then(function() { window.location.reload(true); });
-      } else {
-        // @ts-ignore
-        window.location.reload(true);
-      }
-    });
+    navigator.serviceWorker.getRegistration()
+      .then((reg) => {
+        console.log(reg);
+        if (reg) {
+          reg.unregister()
+            // @ts-ignore
+            .then(() => window.location.reload(true));
+        }
+      });
   } catch (e) {}
 
   this.loadData();
