@@ -26,9 +26,14 @@ export class PageGuard implements CanActivate {
       return this.afs
         .collection(FirestoreCollection.Pages)
         .doc(name)
-        .valueChanges()
+        .get()
         .pipe(
-          switchMap(data => {
+          switchMap(ref => {
+
+            const data: any = {
+              id: ref.id,
+              ...ref.data()
+            }
 
             if (data && data !== 'welcome') {
               this.state.currentPage$.next(data);
