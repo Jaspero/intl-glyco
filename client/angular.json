@@ -62,7 +62,7 @@
                   "maximumError": "10kb"
                 }
               ],
-              "serviceWorker": true,
+              "serviceWorker": false,
               "ngswConfigPath": "projects/website/ngsw-config.json"
             }
           }
