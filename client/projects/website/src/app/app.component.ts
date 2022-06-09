@@ -35,6 +35,19 @@ eventsShort$ = new BehaviorSubject([]);
 eventsShortLength$ = new BehaviorSubject(0);
 
 ngOnInit() {
+
+  try {
+    navigator.serviceWorker.getRegistration().then(function(reg) {
+      if (reg) {
+        // @ts-ignore
+        reg.unregister().then(function() { window.location.reload(true); });
+      } else {
+        // @ts-ignore
+        window.location.reload(true);
+      }
+    });
+  } catch (e) {}
+
   this.loadData();
 }
 

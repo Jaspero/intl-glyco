@@ -16,8 +16,6 @@ import {
   DateFormatterParams
 } from 'angular-calendar';
 import {DraggableHelper} from 'angular-draggable-droppable';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 
 export class CustomDateFormatter extends CalendarDateFormatter {
   public monthViewColumnHeader({ date, locale }: DateFormatterParams): string {
@@ -38,8 +36,7 @@ export class CustomDateFormatter extends CalendarDateFormatter {
 
     // Calendar
     CalendarCommonModule,
-    CalendarMonthModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    CalendarMonthModule
   ],
   providers: [
     StateService,
