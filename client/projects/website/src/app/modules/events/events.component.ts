@@ -21,13 +21,16 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
     this.events$ = this.afs
-      .collection(FirestoreCollection.Events)
-      .snapshotChanges()
+      .collection(
+        FirestoreCollection.Events,
+        ref => ref.orderBy('createdOn', 'desc')
+      )
+      .get()
       .pipe(
-        map(events =>
-          events.map(event => ({
-            id: event.payload.doc.id,
-            ...(event.payload.doc.data() as any)
+        map(({docs}) =>
+          docs.map(event => ({
+            id: event.id,
+            ...(event.data() as any)
           }))
         )
       );

@@ -69,3 +69,5 @@ node_modules/
 .env
 
 # Don't store the service-account.json
+temp/
+key.json
