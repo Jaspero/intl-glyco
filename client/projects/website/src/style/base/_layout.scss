@@ -33,7 +33,9 @@ header {
   position: fixed;
   z-index: 2;
   width: 100%;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  box-shadow: 0 2px 4px 0px rgba(0,0,0,.2);
+  top: 0;
+  
   .header_main {
     background: #333333;
     button svg, a svg { transition: .2s; }
